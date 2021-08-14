@@ -198,10 +198,12 @@ class Frame2D(_Frame2DLoader,
         if arg[0] == Ellipsis:
             arg = [slice(None, None, None), slice(None, None, None), arg[-1]]
 
+
         if isinstance(arg[0], int):
             arg[0] = slice(arg[0], arg[0]+1, None)
         if isinstance(arg[1], int):
             arg[1] = slice(arg[1], arg[1]+1, None)
+
 
         if len(arg) < 3:
             # For this, we pass to numpy to handle XY slicing

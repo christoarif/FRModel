@@ -4,10 +4,9 @@ import numpy as np
 
 from frmodel.base.D2.frame2D import Frame2D
 from frmodel.base.consts import CONSTS
-from tests.base.D2Fixture.test_fixture import TestD2Fixture
 
 
-class TestGLCM(TestD2Fixture):
+class TestGLCM():
 
     def test_glcm(self):
         """ Custom validated and calculated GLCM Test. See Journal for example. """
