@@ -11,15 +11,15 @@ def test_labels(f, c):
 
 def test_data_present(f, c):
     """ Slices the data that is already present """
-    assert 3 == f.data_chn([c.RGB]).shape[-1]
-    assert 1 == f.data_chn([c.RED]).shape[-1]
-    assert 1 == f.data_chn([c.GREEN]).shape[-1]
-    assert 1 == f.data_chn([c.BLUE]).shape[-1]
+    assert 3 == f[..., c.RGB].shape[-1]
+    assert 1 == f[..., c.RED].shape[-1]
+    assert 1 == f[..., c.GREEN].shape[-1]
+    assert 1 == f[..., c.BLUE].shape[-1]
 
 def test_data_absent(f, c):
     """ Attempts to get data that isn't there. Will throw an exception """
     with pytest.raises(KeyError):
-        f.data_chn([c.EX_G])
+        _ = f[..., c.EX_G]
 
 def test_get_present(f, c):
     """ Gets the channels that is already present. Synonymous with data_chn """
@@ -31,13 +31,13 @@ def test_get_calculate(f, c):
     """ Calculates channels that are absent """
     g = f.get_chns(self_=False, chns=[c.HSV])  # This should give us the HSV Channels only
 
-    assert 0 == g.data_chn([c.HUE]).labels[c.HUE]
-    assert 0 == g.data_chn([c.SATURATION]).labels[c.SATURATION]
-    assert 0 == g.data_chn([c.VALUE]).labels[c.VALUE]
+    assert 0 == g[..., c.HUE].labels[c.HUE]
+    assert 0 == g[..., c.SATURATION].labels[c.SATURATION]
+    assert 0 == g[..., c.VALUE].labels[c.VALUE]
 
     # Red isn't present anymore due to self_=False
     with pytest.raises(KeyError):
-        g.data_chn([c.RED])
+        _ = g[..., c.RED]
 
 def test_shape(f):
     """ Tests the data shape and orientation """
