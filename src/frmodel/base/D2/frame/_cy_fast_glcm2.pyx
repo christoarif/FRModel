@@ -117,7 +117,7 @@ cdef class GLCM:
         mean_i /= n
         mean_j /= n
 
-        features[MEAN] = (mean_i + mean_j) / 2
+        features[MEAN] += (mean_i + mean_j) / 2
 
         for cr in range(crs):
             for cc in range(ccs):
@@ -130,7 +130,7 @@ cdef class GLCM:
         std_i /= n
         std_j /= n
 
-        features[VAR] = (std_i + std_j) / 2
+        features[VAR] += (std_i + std_j) / 2
 
         std_i = sqrt(std_i)
         std_j = sqrt(std_j)
