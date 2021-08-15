@@ -203,18 +203,14 @@ class Frame2D(_Frame2DLoader,
 
         if len(arg) < 3:
             # For this, we pass to numpy to handle XY slicing
-            return self.create(self.data.__getitem__(*args, **kwargs),
-                               self.labels)
+            return Frame2D(self.data.__getitem__(*args, **kwargs), self.labels)
         elif len(arg) == 3:
             # Handle Channel Indexing here
             if isinstance(arg[2], (Iterable, str)):
                 # Means, we get a list of indexes to index
                 if len(set(arg[2])) != len(list(arg[2])) and not isinstance(arg[2], str):
                     raise KeyError("Cannot index duplicate labels.")
-                return self.create(
-                    self.data.__getitem__((*arg[:-1], self._labels_to_ix(arg[2]))),
-                    labels=arg[2]
-                )
+                return Frame2D(self.data.__getitem__((*arg[:-1], self._labels_to_ix(arg[2]))), labels=arg[2])
             else:
                 raise KeyError(f"Cannot slice the Channel Index, use Indexes. {arg} provided")
         else:
