@@ -103,8 +103,9 @@ cdef class GLCM:
 
         cdef DTYPE_ft32 mean_i = 0
         cdef DTYPE_ft32 mean_j = 0
-        cdef DTYPE_ft32 std_i = 0
-        cdef DTYPE_ft32 std_j = 0
+        cdef DTYPE_ft32 var_i = 0
+        cdef DTYPE_ft32 var_j = 0
+        cdef DTYPE_ft32 std = 0
 
         for cr in range(crs):
             for cc in range(ccs):
@@ -126,23 +127,23 @@ cdef class GLCM:
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
                 features[ASM] += glcm[cr, cc] ** 2
-                std_i += (i - mean_i) ** 2
-                std_j += (j - mean_j) ** 2
+                var_i += (i - mean_i) ** 2
+                var_j += (j - mean_j) ** 2
 
-        std_i /= n
-        std_j /= n
+        var_i /= n
+        var_j /= n
 
-        features[VAR] += (std_i + std_j) / 2
+        features[VAR] += (var_i + var_j) / 2
 
-        std_i = sqrt(std_i)
-        std_j = sqrt(std_j)
+        std = sqrt(var_i) * sqrt(var_j)
 
         for cr in range(crs):
             for cc in range(ccs):
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
-                features[CORRELATION] += \
-                    (i - mean_i) * (j - mean_j) / std_i / std_j
+
+                if std != 0.0:
+                    features[CORRELATION] += (i - mean_i) * (j - mean_j) / std
 
         features[CONTRAST]    /= n
         features[ASM]         /= (n ** 2) * 2
