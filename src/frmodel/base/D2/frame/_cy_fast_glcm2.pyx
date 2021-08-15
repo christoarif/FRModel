@@ -14,32 +14,41 @@ from libc.math cimport sqrt
 
 cdef class GLCM:
     cdef public DTYPE_t8 radius, bins, diameter
+    cdef public np.ndarray ar
+    cdef public np.ndarray features
+    cdef public np.ndarray glcm
 
-    def __init__(self, DTYPE_t8 radius, DTYPE_t8 bins):
+    def __init__(self, DTYPE_t8 radius, DTYPE_t8 bins,
+                 np.ndarray[DTYPE_t32, ndim=3] ar):
         self.radius = radius
         self.diameter = radius * 2 + 1
         self.bins = bins
-        
+        self.ar = ar
+        self.features = np.zeros([ar.shape[0] - self.diameter,
+                                  ar.shape[1] - self.diameter,
+                                  ar.shape[2]],
+                                 dtype=float)
+        self.glcm = np.zeros([bins, bins], dtype=np.uint8)
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def cy_glcm(self, np.ndarray[DTYPE_t32, ndim=3] ar):
+    def cy_glcm(self):
         """
 
         :param ar: R C CH
         :return:
         """
+        cdef np.ndarray[DTYPE_t32, ndim = 3] ar = self.ar
 
         cdef np.ndarray ar_bin = self._binarize(ar)
         cdef DTYPE_t8 chs = ar_bin.shape[2]
-        cdef np.ndarray glcm = self._empty_glcm(ar)
         for ch in tqdm(range(chs)):
             pairs = self._pair(ar_bin[..., ch])
             for pair in pairs:
                 # Pair: Tuple
-                self._populate_glcm(pair[0], pair[1], glcm[...,ch])
+                self._populate_glcm(pair[0], pair[1])
 
-        return glcm + glcm.swapaxes(0,1)
+        return self.glcm
 
 
     @cython.boundscheck(False)
@@ -47,23 +56,6 @@ cdef class GLCM:
     def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
         """ This binarizes the 2D image by its min-max """
         return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
-
-
-    @cython.boundscheck(False)
-    @cython.wraparound(False)
-    def _empty_glcm(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
-        """ Creates an empty GLCM
-
-        Shape is BIN, BIN, WRS, WCS, CH
-        """
-
-        # TODO: Make this only for every channel
-        return np.zeros(shape=[self.bins, self.bins,
-                               ar.shape[0] - self.diameter,
-                               ar.shape[1] - self.diameter,
-                               ar.shape[2]],
-                        dtype=np.uint8)
-
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
@@ -94,46 +86,50 @@ cdef class GLCM:
     def _populate_glcm(self,
                        np.ndarray[DTYPE_t8, ndim=4] pair_i,
                        np.ndarray[DTYPE_t8, ndim=4] pair_j,
-                       np.ndarray[DTYPE_t8, ndim=4] glcm):
+                       ):
         """ The ar would be WR, WC, CR, CC
 
         :param pair_i: WR WC CR CC
         :param pair_j: WR WC CR CC
-        :param glcm: BIN BIN WR WC
         :return:
         """
-        cdef DTYPE_t8 wrs = glcm.shape[2]
-        cdef DTYPE_t8 wcs = glcm.shape[3]
+        cdef DTYPE_t8 wrs = pair_i.shape[2]
+        cdef DTYPE_t8 wcs = pair_i.shape[3]
+        cdef DTYPE_t8 wr, wc;
         for wr in range(wrs):
             for wc in range(wcs):
-                self._populate_glcm_single(pair_i[wr, wc], pair_j[wr, wc], glcm[..., wr, wc])
+                self._populate_glcm_single(pair_i[wr, wc], pair_j[wr, wc])
 
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
     def _populate_glcm_single(self,
                               np.ndarray[DTYPE_t8, ndim=2] pair_i,
-                              np.ndarray[DTYPE_t8, ndim=2] pair_j,
-                              np.ndarray[DTYPE_t8, ndim=2] glcm):
+                              np.ndarray[DTYPE_t8, ndim=2] pair_j):
         """
 
         :param pair_i: CR CC
         :param pair_j: CR CC
-        :param glcm: BIN BIN
         :return:
         """
         cdef DTYPE_t8 crs = pair_i.shape[0]
         cdef DTYPE_t8 ccs = pair_i.shape[1]
+        cdef DTYPE_t8 cr, cc
         cdef DTYPE_t8 i = 0
         cdef DTYPE_t8 j = 0
+
+        cdef np.ndarray[DTYPE_t8, ndim=2] glcm = self.glcm
+        glcm[:] = 0
+
         for cr in range(crs):
             for cc in range(ccs):
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
                 glcm[i, j] += 1
-
                 # Contrast += ((i - j) ** 2) / n
                 # ASM += sum of all squared / n**2
+
+
 
 
     #
