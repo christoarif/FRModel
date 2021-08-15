@@ -113,6 +113,7 @@ cdef class GLCM:
                 mean_i += i
                 mean_j += j
                 glcm[i, j] += 1
+                glcm[j, i] += 1
 
         mean_i /= n
         mean_j /= n
@@ -143,7 +144,7 @@ cdef class GLCM:
                     (i - mean_i) * (j - mean_j) / std_i / std_j
 
         features[CONTRAST]    /= n
-        features[ASM]         /= n ** 2
+        features[ASM]         /= (n ** 2) * 2
         features[CORRELATION] /= n
 
     @cython.boundscheck(False)
