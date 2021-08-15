@@ -29,12 +29,14 @@ class _Frame2DChannelFastGLCM(ABC):
         radius:      int = 2
         bins:        int = 8
 
-        scale_on_bands: bool = False
-
         channels:     List[CONSTS.CHN] = field(default_factory=lambda: [])
         channel_maxs: List[float]      = field(default_factory=lambda: [])
         channel_mins: List[float]      = field(default_factory=lambda: [])
         verbose:     bool = True
+
+        @property
+        def diameter(self):
+            return self.radius * 2 + 1
 
     def get_glcm(self: 'Frame2D', glcm:GLCM) -> Tuple[np.ndarray, List[str]]:
         """ This will get the GLCM statistics for this window
@@ -48,29 +50,26 @@ class _Frame2DChannelFastGLCM(ABC):
         if glcm.bins <= 0 or (glcm.bins & glcm.bins - 1) != 0:
             raise Exception("glcm.bins must be a power of 2.")
 
-        if glcm.scale_on_bands:
-            scaled = self.scale_values_on_band(to_min=0, to_max=glcm.bins - 1).astype(np.uint8)
-            windows = scaled.view_windows(glcm.radius * 2 + 1, glcm.radius * 2 + 1,
-                                          glcm.by, glcm.by)
-        else:
-            scaled = self.scale_values_independent(
-                from_min=glcm.channel_mins if glcm.channel_mins else None,
-                from_max=glcm.channel_maxs if glcm.channel_maxs else None,
-                to_min=CONSTS.BOUNDS.MIN_RGB,
-                to_max=CONSTS.BOUNDS.MAX_RGB - 1).astype(np.uint8)
+        scaled = self.scale_values_independent(
+            from_min=glcm.channel_mins if glcm.channel_mins else None,
+            from_max=glcm.channel_maxs if glcm.channel_maxs else None,
+            to_min=CONSTS.BOUNDS.MIN_RGB,
+            to_max=CONSTS.BOUNDS.MAX_RGB - 1).astype(np.uint8)
 
-            windows = (scaled.view_windows(glcm.radius * 2 + 1,
-                                           glcm.radius * 2 + 1, glcm.by, glcm.by) //
-                       (CONSTS.BOUNDS.MAX_RGB // glcm.bins)).astype(np.uint8)
+        windows = (scaled.view_windows(glcm.diameter, glcm.diameter, glcm.by, glcm.by) //
+                   (CONSTS.BOUNDS.MAX_RGB // glcm.bins)).astype(np.uint8)
+
+        glcms = []
+        for i in range(2):
+            windows_a, windows_b = windows[:-glcm.by, :-glcm.by], windows[glcm.by:, glcm.by:]
+            # Combination Window
+            windows_h = windows_a.shape[0]
+            windows_w = windows_a.shape[1]
+
+            # FAST GLCM
+            result = cy_fast_glcm(windows_a, windows_b, True)
 
 
-        windows_a, windows_b = windows[:-glcm.by, :-glcm.by], windows[glcm.by:, glcm.by:]
-        # Combination Window
-        windows_h = windows_a.shape[0]
-        windows_w = windows_a.shape[1]
-
-        # FAST GLCM
-        result = cy_fast_glcm(windows_a, windows_b, True)
         n_chns = len(list(self._util_flatten(glcm.channels)))
 
         # We get the lengths to preemptively create a GLCM np.ndarray
