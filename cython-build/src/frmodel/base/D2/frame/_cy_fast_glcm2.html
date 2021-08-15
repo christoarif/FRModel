@@ -434,22 +434,22 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px
 <pre class="cython line score-0">&#xA0;<span class="">018</span>:     <span class="n">MEAN</span> <span class="o">=</span> <span class="mf">3</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">019</span>:     <span class="n">VAR</span> <span class="o">=</span> <span class="mf">4</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">020</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">021</span>: <span class="k">cdef</span> <span class="k">class</span> <span class="nf">GLCM</span><span class="p">:</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">021</span>: <span class="k">cdef</span> <span class="k">class</span> <span class="nf">CyGLCM</span><span class="p">:</span></pre>
 <pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">022</span>:     <span class="k">cdef</span> <span class="kr">public</span> <span class="kt">DTYPE_t8</span> <span class="nf">radius</span><span class="p">,</span> <span class="nf">bins</span><span class="p">,</span> <span class="nf">diameter</span></pre>
 <pre class='cython code score-33 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -463,7 +463,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.radius.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.radius.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -472,19 +472,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6radius_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6radius_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -495,7 +495,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.radius.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.radius.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -503,19 +503,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -529,7 +529,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.bins.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.bins.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -538,19 +538,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4bins_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4bins_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -561,7 +561,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.bins.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.bins.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -569,19 +569,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -595,7 +595,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.diameter.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.diameter.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
@@ -604,19 +604,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8diameter_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8diameter_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -627,7 +627,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.diameter.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.diameter.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -635,19 +635,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 </pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">023</span>:     <span class="k">cdef</span> <span class="kr">public</span> <span class="kt">np</span>.<span class="kt">ndarray</span> <span class="nf">ar</span></pre>
 <pre class='cython code score-11 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -664,19 +664,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -694,7 +694,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   goto __pyx_L0;
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.ar.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.ar.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -702,19 +702,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2ar_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2ar_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__", 0);
@@ -731,19 +731,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 </pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">024</span>:     <span class="k">cdef</span> <span class="kr">public</span> <span class="kt">np</span>.<span class="kt">ndarray</span> <span class="nf">features</span></pre>
 <pre class='cython code score-11 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -760,19 +760,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -790,7 +790,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   goto __pyx_L0;
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.features.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.features.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -798,19 +798,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8features_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8features_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__", 0);
@@ -827,19 +827,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 </pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">025</span>:     <span class="k">cdef</span> <span class="kr">public</span> <span class="kt">np</span>.<span class="kt">ndarray</span> <span class="nf">glcm</span></pre>
 <pre class='cython code score-11 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm___get__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm___get__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -856,19 +856,19 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_2__set__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_2__set__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -886,7 +886,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   goto __pyx_L0;
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.glcm.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.glcm.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
@@ -894,19 +894,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 }
 
 /* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_4__del__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4glcm_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4glcm_4__del__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__del__", 0);
@@ -922,18 +922,18 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   return __pyx_r;
 }
 </pre><pre class="cython line score-0">&#xA0;<span class="">026</span>: </pre>
-<pre class="cython line score-59" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">027</span>:     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DTYPE_t8</span> <span class="n">radius</span><span class="p">,</span> <span class="n">DTYPE_t8</span> <span class="n">bins</span><span class="p">,</span></pre>
+<pre class="cython line score-59" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">027</span>:     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">DTYPE_t32</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">3</span><span class="p">]</span> <span class="n">ar</span><span class="p">,</span></pre>
 <pre class='cython code score-59 '>/* Python wrapper */
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyArrayObject *__pyx_v_ar = 0;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_radius;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_bins;
-  PyArrayObject *__pyx_v_ar = 0;
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_radius,&amp;__pyx_n_s_bins,&amp;__pyx_n_s_ar,0};
+    static PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_ar,&amp;__pyx_n_s_radius,&amp;__pyx_n_s_bins,0};
     PyObject* values[3] = {0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -951,17 +951,17 @@ static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
       kw_args = <span class='py_c_api'>PyDict_Size</span>(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_radius)) != 0)) kw_args--;
+        if (likely((values[0] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_ar)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_bins)) != 0)) kw_args--;
+        if (likely((values[1] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_radius)) != 0)) kw_args--;
         else {
           <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__init__", 1, 3, 3, 1); <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_ar)) != 0)) kw_args--;
+        if (likely((values[2] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_bins)) != 0)) kw_args--;
         else {
           <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__init__", 1, 3, 3, 2); <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L3_error)</span>
         }
@@ -976,20 +976,20 @@ static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
       values[1] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 1);
       values[2] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 2);
     }
-    __pyx_v_radius = __Pyx_PyInt_As_npy_uint8(values[0]); if (unlikely((__pyx_v_radius == ((npy_uint8)-1)) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L3_error)</span>
-    __pyx_v_bins = __Pyx_PyInt_As_npy_uint8(values[1]); if (unlikely((__pyx_v_bins == ((npy_uint8)-1)) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L3_error)</span>
-    __pyx_v_ar = ((PyArrayObject *)values[2]);
+    __pyx_v_ar = ((PyArrayObject *)values[0]);
+    __pyx_v_radius = __Pyx_PyInt_As_npy_uint8(values[1]); if (unlikely((__pyx_v_radius == ((npy_uint8)-1)) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 28, __pyx_L3_error)</span>
+    __pyx_v_bins = __Pyx_PyInt_As_npy_uint8(values[2]); if (unlikely((__pyx_v_bins == ((npy_uint8)-1)) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 28, __pyx_L3_error)</span>
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__init__", 1, 3, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_ar), __pyx_ptype_5numpy_ndarray, 1, "ar", 0))) <span class='error_goto'>__PYX_ERR(0, 28, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM___init__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), __pyx_v_radius, __pyx_v_bins, __pyx_v_ar);
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_ar), __pyx_ptype_5numpy_ndarray, 1, "ar", 0))) <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L1_error)</span>
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM___init__(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), __pyx_v_ar, __pyx_v_radius, __pyx_v_bins);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1003,7 +1003,7 @@ static int __pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   return __pyx_r;
 }
 
-static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM___init__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_radius, __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_bins, PyArrayObject *__pyx_v_ar) {
+static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM___init__(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyArrayObject *__pyx_v_ar, __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_radius, __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_bins) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_ar;
   __Pyx_Buffer __pyx_pybuffer_ar;
   int __pyx_r;
@@ -1034,7 +1034,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
     <span class='pyx_c_api'>__Pyx_ErrFetch</span>(&amp;__pyx_type, &amp;__pyx_value, &amp;__pyx_tb);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_ar.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   goto __pyx_L2;
   __pyx_L0:;
@@ -1043,7 +1043,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0">&#xA0;<span class="">028</span>:                  <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">DTYPE_t32</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">3</span><span class="p">]</span> <span class="n">ar</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">028</span>:                  <span class="n">DTYPE_t8</span> <span class="n">radius</span><span class="p">,</span> <span class="n">DTYPE_t8</span> <span class="n">bins</span><span class="p">):</span></pre>
 <pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">029</span>:         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_self-&gt;radius = __pyx_v_radius;
 </pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">030</span>:         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="mf">2</span> <span class="o">+</span> <span class="mf">1</span></pre>
@@ -1160,19 +1160,19 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GL
 <pre class="cython line score-0">&#xA0;<span class="">040</span>:     <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-28" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">041</span>:     <span class="k">def</span> <span class="nf">create_glcm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-28 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_3create_glcm(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_3create_glcm(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_3create_glcm(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_3create_glcm(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("create_glcm (wrapper)", 0);
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2create_glcm(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2create_glcm(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_2create_glcm(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_2create_glcm(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self) {
   PyArrayObject *__pyx_v_ar = 0;
   PyArrayObject *__pyx_v_features = 0;
   PyArrayObject *__pyx_v_ar_bin = 0;
@@ -1214,7 +1214,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_ar.rcbuffer-&gt;pybuffer);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_features.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.create_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.create_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -1339,7 +1339,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
         <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
         <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5); __pyx_t_5 = 0;
         /*except:*/ {
-          <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM.create_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM.create_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (<span class='pyx_c_api'>__Pyx_GetException</span>(&amp;__pyx_t_1, &amp;__pyx_t_3, &amp;__pyx_t_2) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 47, __pyx_L9_except_error)</span>
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
@@ -1606,9 +1606,9 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 <pre class="cython line score-0">&#xA0;<span class="">058</span>:     <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-68" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">059</span>:     <span class="k">def</span> <span class="nf">_populate_glcm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span></pre>
 <pre class='cython code score-68 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_5_populate_glcm(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4_populate_glcm[] = " The ar would be WR, WC, CR, CC\n\n        :param pair_i: WR WC CR CC\n        :param pair_j: WR WC CR CC\n        :return:\n        ";
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_5_populate_glcm(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_5_populate_glcm(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4_populate_glcm[] = " The ar would be WR, WC, CR, CC\n\n        :param pair_i: WR WC CR CC\n        :param pair_j: WR WC CR CC\n        :return:\n        ";
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_5_populate_glcm(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_pair_i = 0;
   PyArrayObject *__pyx_v_pair_j = 0;
   PyArrayObject *__pyx_v_features = 0;
@@ -1667,14 +1667,14 @@ static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("_populate_glcm", 1, 3, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 59, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._populate_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._populate_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_pair_i), __pyx_ptype_5numpy_ndarray, 1, "pair_i", 0))) <span class='error_goto'>__PYX_ERR(0, 60, __pyx_L1_error)</span>
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_pair_j), __pyx_ptype_5numpy_ndarray, 1, "pair_j", 0))) <span class='error_goto'>__PYX_ERR(0, 61, __pyx_L1_error)</span>
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_features), __pyx_ptype_5numpy_ndarray, 1, "features", 0))) <span class='error_goto'>__PYX_ERR(0, 62, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4_populate_glcm(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), __pyx_v_pair_i, __pyx_v_pair_j, __pyx_v_features);
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4_populate_glcm(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), __pyx_v_pair_i, __pyx_v_pair_j, __pyx_v_features);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1688,7 +1688,7 @@ static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_4_populate_glcm(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyArrayObject *__pyx_v_pair_i, PyArrayObject *__pyx_v_pair_j, PyArrayObject *__pyx_v_features) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_4_populate_glcm(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyArrayObject *__pyx_v_pair_i, PyArrayObject *__pyx_v_pair_j, PyArrayObject *__pyx_v_features) {
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t16 __pyx_v_wrs;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t16 __pyx_v_wcs;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t16 __pyx_v_wr;
@@ -1749,7 +1749,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_pair_i.rcbuffer-&gt;pybuffer);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_pair_j.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._populate_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._populate_glcm", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -1899,9 +1899,9 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 <pre class="cython line score-0">&#xA0;<span class="">081</span>:     <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-67" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">082</span>:     <span class="k">def</span> <span class="nf">_populate_glcm_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span></pre>
 <pre class='cython code score-67 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_7_populate_glcm_single(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6_populate_glcm_single[] = "\n\n        :param pair_i: CR CC\n        :param pair_j: CR CC\n        :return:\n        ";
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_7_populate_glcm_single(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_7_populate_glcm_single(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6_populate_glcm_single[] = "\n\n        :param pair_i: CR CC\n        :param pair_j: CR CC\n        :return:\n        ";
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_7_populate_glcm_single(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_pair_i = 0;
   PyArrayObject *__pyx_v_pair_j = 0;
   PyArrayObject *__pyx_v_features = 0;
@@ -1960,14 +1960,14 @@ static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("_populate_glcm_single", 1, 3, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 82, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._populate_glcm_single", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._populate_glcm_single", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_pair_i), __pyx_ptype_5numpy_ndarray, 1, "pair_i", 0))) <span class='error_goto'>__PYX_ERR(0, 83, __pyx_L1_error)</span>
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_pair_j), __pyx_ptype_5numpy_ndarray, 1, "pair_j", 0))) <span class='error_goto'>__PYX_ERR(0, 84, __pyx_L1_error)</span>
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_features), __pyx_ptype_5numpy_ndarray, 1, "features", 0))) <span class='error_goto'>__PYX_ERR(0, 85, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6_populate_glcm_single(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), __pyx_v_pair_i, __pyx_v_pair_j, __pyx_v_features);
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6_populate_glcm_single(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), __pyx_v_pair_i, __pyx_v_pair_j, __pyx_v_features);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1981,7 +1981,7 @@ static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_6_populate_glcm_single(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyArrayObject *__pyx_v_pair_i, PyArrayObject *__pyx_v_pair_j, PyArrayObject *__pyx_v_features) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_6_populate_glcm_single(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyArrayObject *__pyx_v_pair_i, PyArrayObject *__pyx_v_pair_j, PyArrayObject *__pyx_v_features) {
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_crs;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_ccs;
   __pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 __pyx_v_cr;
@@ -2052,7 +2052,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_pair_i.rcbuffer-&gt;pybuffer);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_pair_j.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._populate_glcm_single", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._populate_glcm_single", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2268,14 +2268,14 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 <pre class="cython line score-0">&#xA0;<span class="">153</span>:     <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-19" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">154</span>:     <span class="k">def</span> <span class="nf">_binarize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">DTYPE_t32</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">3</span><span class="p">]</span> <span class="n">ar</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span></pre>
 <pre class='cython code score-19 '>/* Python wrapper */
-static PyArrayObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_9_binarize(PyObject *__pyx_v_self, PyObject *__pyx_v_ar); /*proto*/
-static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8_binarize[] = " This binarizes the 2D image by its min-max ";
-static PyArrayObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_9_binarize(PyObject *__pyx_v_self, PyObject *__pyx_v_ar) {
+static PyArrayObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_9_binarize(PyObject *__pyx_v_self, PyObject *__pyx_v_ar); /*proto*/
+static char __pyx_doc_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8_binarize[] = " This binarizes the 2D image by its min-max ";
+static PyArrayObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_9_binarize(PyObject *__pyx_v_self, PyObject *__pyx_v_ar) {
   PyArrayObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("_binarize (wrapper)", 0);
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_ar), __pyx_ptype_5numpy_ndarray, 1, "ar", 0))) <span class='error_goto'>__PYX_ERR(0, 154, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8_binarize(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyArrayObject *)__pyx_v_ar));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8_binarize(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyArrayObject *)__pyx_v_ar));
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2289,7 +2289,7 @@ static PyArrayObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fas
   return __pyx_r;
 }
 
-static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_8_binarize(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyArrayObject *__pyx_v_ar) {
+static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_8_binarize(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyArrayObject *__pyx_v_ar) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_ar;
   __Pyx_Buffer __pyx_pybuffer_ar;
   PyArrayObject *__pyx_r = NULL;
@@ -2318,7 +2318,7 @@ static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fas
     <span class='pyx_c_api'>__Pyx_ErrFetch</span>(&amp;__pyx_type, &amp;__pyx_value, &amp;__pyx_tb);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_ar.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._binarize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._binarize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2410,13 +2410,13 @@ static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fas
 <pre class="cython line score-0">&#xA0;<span class="">158</span>:     <span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-24" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">159</span>:     <span class="k">def</span> <span class="nf">_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">DTYPE_t8</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">ar</span><span class="p">):</span></pre>
 <pre class='cython code score-24 '>/* Python wrapper */
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_11_pair(PyObject *__pyx_v_self, PyObject *__pyx_v_ar); /*proto*/
-static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_11_pair(PyObject *__pyx_v_self, PyObject *__pyx_v_ar) {
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_11_pair(PyObject *__pyx_v_self, PyObject *__pyx_v_ar); /*proto*/
+static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_11_pair(PyObject *__pyx_v_self, PyObject *__pyx_v_ar) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("_pair (wrapper)", 0);
   if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_ar), __pyx_ptype_5numpy_ndarray, 1, "ar", 0))) <span class='error_goto'>__PYX_ERR(0, 159, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_10_pair(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *)__pyx_v_self), ((PyArrayObject *)__pyx_v_ar));
+  __pyx_r = __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_10_pair(((struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *)__pyx_v_self), ((PyArrayObject *)__pyx_v_ar));
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2430,7 +2430,7 @@ static PyObject *__pyx_pw_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_4GLCM_10_pair(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_GLCM *__pyx_v_self, PyArrayObject *__pyx_v_ar) {
+static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6CyGLCM_10_pair(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *__pyx_v_self, PyArrayObject *__pyx_v_ar) {
   PyObject *__pyx_v_ar_w = NULL;
   PyObject *__pyx_v_pair_h = NULL;
   PyObject *__pyx_v_pair_v = NULL;
@@ -2464,7 +2464,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
     <span class='pyx_c_api'>__Pyx_ErrFetch</span>(&amp;__pyx_type, &amp;__pyx_value, &amp;__pyx_tb);
     <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_ar.rcbuffer-&gt;pybuffer);
   <span class='pyx_c_api'>__Pyx_ErrRestore</span>(__pyx_type, __pyx_value, __pyx_tb);}
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.GLCM._pair", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2.CyGLCM._pair", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;

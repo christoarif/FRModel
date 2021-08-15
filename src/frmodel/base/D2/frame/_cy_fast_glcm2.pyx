@@ -18,14 +18,14 @@ cdef enum:
     MEAN = 3
     VAR = 4
 
-cdef class GLCM:
+cdef class CyGLCM:
     cdef public DTYPE_t8 radius, bins, diameter
     cdef public np.ndarray ar
     cdef public np.ndarray features
     cdef public np.ndarray glcm
 
-    def __init__(self, DTYPE_t8 radius, DTYPE_t8 bins,
-                 np.ndarray[DTYPE_t32, ndim=3] ar):
+    def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,
+                 DTYPE_t8 radius, DTYPE_t8 bins):
         self.radius = radius
         self.diameter = radius * 2 + 1
         self.bins = bins
