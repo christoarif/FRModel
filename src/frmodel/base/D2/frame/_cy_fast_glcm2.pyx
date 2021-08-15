@@ -2,7 +2,7 @@ import numpy as np
 cimport numpy as np
 cimport cython
 from skimage.util import view_as_windows
-
+from libc.math cimport sqrt
 ctypedef np.uint8_t DTYPE_t8
 ctypedef np.uint16_t DTYPE_t16
 ctypedef np.uint32_t DTYPE_t32
@@ -11,6 +11,13 @@ from cython.parallel cimport prange
 from tqdm import tqdm
 from libc.math cimport sqrt
 
+
+cdef enum:
+    CONTRAST = 0
+    CORRELATION = 1
+    ASM = 2
+    MEAN = 3
+    VAR = 4
 
 cdef class GLCM:
     cdef public DTYPE_t8 radius, bins, diameter
@@ -26,18 +33,13 @@ cdef class GLCM:
         self.ar = ar
         self.features = np.zeros([ar.shape[0] - self.diameter,
                                   ar.shape[1] - self.diameter,
-                                  ar.shape[2], 1],
+                                  ar.shape[2], 5],
                                  dtype=np.float32)
         self.glcm = np.zeros([bins, bins], dtype=np.uint8)
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
     def cy_glcm(self):
-        """
-
-        :param ar: R C CH
-        :return:
-        """
         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
 
@@ -50,8 +52,6 @@ cdef class GLCM:
                 self._populate_glcm(pair[0], pair[1], features[:,:,ch,:])
 
         return self.features
-
-
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
@@ -94,17 +94,57 @@ cdef class GLCM:
         cdef DTYPE_t8 i = 0
         cdef DTYPE_t8 j = 0
 
+        # n is the size of cell
+        cdef DTYPE_ft32 n = crs * ccs
+
         cdef np.ndarray[DTYPE_t8, ndim=2] glcm = self.glcm
         glcm[:] = 0
+
+        cdef DTYPE_ft32 mean_i = 0
+        cdef DTYPE_ft32 mean_j = 0
+        cdef DTYPE_ft32 std_i = 0
+        cdef DTYPE_ft32 std_j = 0
 
         for cr in range(crs):
             for cc in range(ccs):
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
-                features[0] += ((i - j) ** 2)
-                # Contrast += ((i - j) ** 2) / n
-                # ASM += sum of all squared / n**2
+                features[CONTRAST] += ((i - j) ** 2)
+                mean_i += i
+                mean_j += j
+                glcm[i, j] += 1
 
+        mean_i /= n
+        mean_j /= n
+
+        features[MEAN] = (mean_i + mean_j) / 2
+
+        for cr in range(crs):
+            for cc in range(ccs):
+                i = pair_i[cr, cc]
+                j = pair_j[cr, cc]
+                features[ASM] += glcm[cr, cc] ** 2
+                std_i += (i - mean_i) ** 2
+                std_j += (j - mean_j) ** 2
+
+        std_i /= n
+        std_j /= n
+
+        features[VAR] = (std_i + std_j) / 2
+
+        std_i = sqrt(std_i)
+        std_j = sqrt(std_j)
+
+        for cr in range(crs):
+            for cc in range(ccs):
+                i = pair_i[cr, cc]
+                j = pair_j[cr, cc]
+                features[CORRELATION] += \
+                    (i - mean_i) * (j - mean_j) / std_i / std_j
+
+        features[CONTRAST]    /= n
+        features[ASM]         /= n ** 2
+        features[CORRELATION] /= n
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
