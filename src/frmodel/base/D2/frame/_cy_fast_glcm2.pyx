@@ -7,7 +7,6 @@ ctypedef np.uint8_t DTYPE_t8
 ctypedef np.uint16_t DTYPE_t16
 ctypedef np.uint32_t DTYPE_t32
 ctypedef np.float32_t DTYPE_ft32
-from cython.parallel cimport prange
 from tqdm import tqdm
 from libc.math cimport sqrt
 
@@ -39,17 +38,19 @@ cdef class GLCM:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def cy_glcm(self):
+    def create_glcm(self):
         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
 
         cdef np.ndarray ar_bin = self._binarize(ar)
         cdef DTYPE_t8 chs = ar_bin.shape[2]
-        for ch in tqdm(range(chs)):
-            pairs = self._pair(ar_bin[..., ch])
-            for pair in pairs:
-                # Pair: Tuple
-                self._populate_glcm(pair[0], pair[1], features[:,:,ch,:])
+        with tqdm(total=chs * 4, desc=f"GLCM Progress") as pbar:
+            for ch in range(chs):
+                pairs = self._pair(ar_bin[..., ch])
+                for pair in pairs:
+                    # Pair: Tuple
+                    self._populate_glcm(pair[0], pair[1], features[:,:,ch,:])
+                    pbar.update()
 
         return self.features
 
