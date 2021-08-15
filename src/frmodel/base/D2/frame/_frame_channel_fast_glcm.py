@@ -41,15 +41,11 @@ class _Frame2DChannelFastGLCM(ABC):
 
         # FAST GLCM
         channels = glcm.channels if glcm.channels else self.labels.keys()
-        data = CyGLCM(self[..., channels].data,
-                      glcm.radius, glcm.bins)\
+        data = CyGLCM(self[..., channels].data.astype(np.float32), glcm.radius, glcm.bins)\
             .create_glcm()
         data = data.swapaxes(-2,-1).reshape([*data.shape[:2], -1])
 
-        # We get the lengths to preemptively create a GLCM np.ndarray
-
         labels = []
-
 
         labels.extend(CONSTS.CHN.GLCM.CON( list(self._util_flatten(channels))))
         labels.extend(CONSTS.CHN.GLCM.COR( list(self._util_flatten(channels))))

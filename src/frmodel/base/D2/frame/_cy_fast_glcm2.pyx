@@ -24,7 +24,7 @@ cdef class CyGLCM:
     cdef public np.ndarray features
     cdef public np.ndarray glcm
 
-    def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,
+    def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,
                  DTYPE_t8 radius, DTYPE_t8 bins):
         self.radius = radius
         self.diameter = radius * 2 + 1
@@ -39,7 +39,7 @@ cdef class CyGLCM:
     @cython.boundscheck(False)
     @cython.wraparound(False)
     def create_glcm(self):
-        cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
+        cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar
         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
 
         cdef np.ndarray ar_bin = self._binarize(ar)
@@ -151,7 +151,7 @@ cdef class CyGLCM:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
+    def _binarize(self, np.ndarray[DTYPE_ft32, ndim=3] ar) -> np.ndarray:
         """ This binarizes the 2D image by its min-max """
         return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
 

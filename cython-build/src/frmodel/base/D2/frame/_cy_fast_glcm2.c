@@ -1874,7 +1874,6 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, cha
 /* Module declarations from 'FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2' */
 static PyTypeObject *__pyx_ptype_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM = 0;
 static PyObject *__pyx_f_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2___pyx_unpickle_CyGLCM__set_state(struct __pyx_obj_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_CyGLCM *, PyObject *); /*proto*/
-static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32 = { "DTYPE_t32", NULL, sizeof(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32), { 0 }, 0, IS_UNSIGNED(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_ft32 = { "DTYPE_ft32", NULL, sizeof(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_ft32), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8 = { "DTYPE_t8", NULL, sizeof(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8), { 0 }, 0, IS_UNSIGNED(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t8), 0 };
 #define __Pyx_MODULE_NAME "FRModel.src.frmodel.base.D2.frame._cy_fast_glcm2"
@@ -2062,7 +2061,7 @@ static PyObject *__pyx_codeobj__15;
 /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":27
  *     cdef public np.ndarray glcm
  * 
- *     def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,             # <<<<<<<<<<<<<<
+ *     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,             # <<<<<<<<<<<<<<
  *                  DTYPE_t8 radius, DTYPE_t8 bins):
  *         self.radius = radius
  */
@@ -2167,12 +2166,12 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6Cy
   __pyx_pybuffernd_ar.rcbuffer = &__pyx_pybuffer_ar;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)__pyx_v_ar, &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 27, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)__pyx_v_ar, &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_ft32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 27, __pyx_L1_error)
   }
   __pyx_pybuffernd_ar.diminfo[0].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ar.diminfo[0].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ar.diminfo[1].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ar.diminfo[1].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_ar.diminfo[2].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_ar.diminfo[2].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[2];
 
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":29
- *     def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,
+ *     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,
  *                  DTYPE_t8 radius, DTYPE_t8 bins):
  *         self.radius = radius             # <<<<<<<<<<<<<<
  *         self.diameter = radius * 2 + 1
@@ -2362,7 +2361,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6Cy
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":27
  *     cdef public np.ndarray glcm
  * 
- *     def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,             # <<<<<<<<<<<<<<
+ *     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,             # <<<<<<<<<<<<<<
  *                  DTYPE_t8 radius, DTYPE_t8 bins):
  *         self.radius = radius
  */
@@ -2396,7 +2395,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6Cy
  *     @cython.boundscheck(False)
  *     @cython.wraparound(False)
  *     def create_glcm(self):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
+ *         cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar
  *         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
  */
 
@@ -2465,7 +2464,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":42
  *     @cython.wraparound(False)
  *     def create_glcm(self):
- *         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar             # <<<<<<<<<<<<<<
+ *         cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
  * 
  */
@@ -2473,7 +2472,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
   __Pyx_INCREF(__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_ft32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) {
       __pyx_v_ar = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_ar.rcbuffer->pybuffer.buf = NULL;
       __PYX_ERR(0, 42, __pyx_L1_error)
     } else {__pyx_pybuffernd_ar.diminfo[0].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ar.diminfo[0].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ar.diminfo[1].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ar.diminfo[1].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_ar.diminfo[2].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_ar.diminfo[2].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[2];
@@ -2484,7 +2483,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":43
  *     def create_glcm(self):
- *         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
+ *         cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar
  *         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features             # <<<<<<<<<<<<<<
  * 
  *         cdef np.ndarray ar_bin = self._binarize(ar)
@@ -2922,7 +2921,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
  *     @cython.boundscheck(False)
  *     @cython.wraparound(False)
  *     def create_glcm(self):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
+ *         cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar
  *         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
  */
 
@@ -4012,7 +4011,7 @@ static PyObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glc
 /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":154
  *     @cython.boundscheck(False)
  *     @cython.wraparound(False)
- *     def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:             # <<<<<<<<<<<<<<
+ *     def _binarize(self, np.ndarray[DTYPE_ft32, ndim=3] ar) -> np.ndarray:             # <<<<<<<<<<<<<<
  *         """ This binarizes the 2D image by its min-max """
  *         return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
  */
@@ -4059,12 +4058,12 @@ static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fas
   __pyx_pybuffernd_ar.rcbuffer = &__pyx_pybuffer_ar;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)__pyx_v_ar, &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_t32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ar.rcbuffer->pybuffer, (PyObject*)__pyx_v_ar, &__Pyx_TypeInfo_nn___pyx_t_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_DTYPE_ft32, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 154, __pyx_L1_error)
   }
   __pyx_pybuffernd_ar.diminfo[0].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ar.diminfo[0].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_ar.diminfo[1].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_ar.diminfo[1].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_ar.diminfo[2].strides = __pyx_pybuffernd_ar.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_ar.diminfo[2].shape = __pyx_pybuffernd_ar.rcbuffer->pybuffer.shape[2];
 
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":156
- *     def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
+ *     def _binarize(self, np.ndarray[DTYPE_ft32, ndim=3] ar) -> np.ndarray:
  *         """ This binarizes the 2D image by its min-max """
  *         return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)             # <<<<<<<<<<<<<<
  * 
@@ -4150,7 +4149,7 @@ static PyArrayObject *__pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fas
   /* "FRModel/src/frmodel/base/D2/frame/_cy_fast_glcm2.pyx":154
  *     @cython.boundscheck(False)
  *     @cython.wraparound(False)
- *     def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:             # <<<<<<<<<<<<<<
+ *     def _binarize(self, np.ndarray[DTYPE_ft32, ndim=3] ar) -> np.ndarray:             # <<<<<<<<<<<<<<
  *         """ This binarizes the 2D image by its min-max """
  *         return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
  */
@@ -4908,7 +4907,7 @@ static int __pyx_pf_7FRModel_3src_7frmodel_4base_2D2_5frame_14_cy_fast_glcm2_6Cy
  *     cdef public np.ndarray features
  *     cdef public np.ndarray glcm             # <<<<<<<<<<<<<<
  * 
- *     def __init__(self, np.ndarray[DTYPE_t32, ndim=3] ar,
+ *     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,
  */
 
 /* Python wrapper */
