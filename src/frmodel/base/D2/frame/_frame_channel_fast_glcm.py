@@ -59,15 +59,13 @@ class _Frame2DChannelFastGLCM(ABC):
         windows = (scaled.view_windows(glcm.diameter, glcm.diameter, glcm.by, glcm.by) //
                    (CONSTS.BOUNDS.MAX_RGB // glcm.bins)).astype(np.uint8)
 
-        glcms = []
-        for i in range(2):
-            windows_a, windows_b = windows[:-glcm.by, :-glcm.by], windows[glcm.by:, glcm.by:]
-            # Combination Window
-            windows_h = windows_a.shape[0]
-            windows_w = windows_a.shape[1]
+        windows_a, windows_b = windows[:-glcm.by, :-glcm.by], windows[glcm.by:, glcm.by:]
+        # Combination Window
+        windows_h = windows_a.shape[0]
+        windows_w = windows_a.shape[1]
 
-            # FAST GLCM
-            result = cy_fast_glcm(windows_a, windows_b, True)
+        # FAST GLCM
+        result = cy_fast_glcm(windows_a, windows_b, True)
 
 
         n_chns = len(list(self._util_flatten(glcm.channels)))

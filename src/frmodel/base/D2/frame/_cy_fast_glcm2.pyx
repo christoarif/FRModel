@@ -26,8 +26,8 @@ cdef class GLCM:
         self.ar = ar
         self.features = np.zeros([ar.shape[0] - self.diameter,
                                   ar.shape[1] - self.diameter,
-                                  ar.shape[2]],
-                                 dtype=float)
+                                  ar.shape[2], 1],
+                                 dtype=np.float32)
         self.glcm = np.zeros([bins, bins], dtype=np.uint8)
 
     @cython.boundscheck(False)
@@ -38,7 +38,8 @@ cdef class GLCM:
         :param ar: R C CH
         :return:
         """
-        cdef np.ndarray[DTYPE_t32, ndim = 3] ar = self.ar
+        cdef np.ndarray[DTYPE_t32, ndim=3] ar = self.ar
+        cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
 
         cdef np.ndarray ar_bin = self._binarize(ar)
         cdef DTYPE_t8 chs = ar_bin.shape[2]
@@ -46,39 +47,10 @@ cdef class GLCM:
             pairs = self._pair(ar_bin[..., ch])
             for pair in pairs:
                 # Pair: Tuple
-                self._populate_glcm(pair[0], pair[1])
+                self._populate_glcm(pair[0], pair[1], features[:,:,ch,:])
 
-        return self.glcm
+        return self.features
 
-
-    @cython.boundscheck(False)
-    @cython.wraparound(False)
-    def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
-        """ This binarizes the 2D image by its min-max """
-        return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
-
-    @cython.boundscheck(False)
-    @cython.wraparound(False)
-    def _empty_feature(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
-        """ Creates an empty GLCM
-
-        Shape is BIN, BIN, WRS, WCS, CH
-        """
-        return np.zeros(shape=[self.bins, self.bins,
-                               ar.shape[0] - self.diameter,
-                               ar.shape[1] - self.diameter,
-                               ar.shape[2]],
-                        dtype=np.uint8)
-
-
-    @cython.boundscheck(False)
-    def _pair(self, np.ndarray[DTYPE_t8, ndim=2] ar):
-        ar_w = view_as_windows(ar, (self.diameter, self.diameter))
-        pair_h = (ar_w[:-1, :-1], ar_w[:-1, 1:])
-        pair_v = (ar_w[:-1, :], ar_w[1:, :])
-        pair_se = (ar_w[:-1, :-1], ar_w[1:, 1:])
-        pair_ne = (ar_w[1:, :-1], ar_w[1:, 1:])
-        return pair_h, pair_v, pair_se, pair_ne
 
 
     @cython.boundscheck(False)
@@ -86,26 +58,30 @@ cdef class GLCM:
     def _populate_glcm(self,
                        np.ndarray[DTYPE_t8, ndim=4] pair_i,
                        np.ndarray[DTYPE_t8, ndim=4] pair_j,
-                       ):
+                       np.ndarray[DTYPE_ft32, ndim=3] features):
         """ The ar would be WR, WC, CR, CC
 
         :param pair_i: WR WC CR CC
         :param pair_j: WR WC CR CC
         :return:
         """
-        cdef DTYPE_t8 wrs = pair_i.shape[2]
-        cdef DTYPE_t8 wcs = pair_i.shape[3]
-        cdef DTYPE_t8 wr, wc;
+        cdef DTYPE_t16 wrs = pair_i.shape[0]
+        cdef DTYPE_t16 wcs = pair_i.shape[1]
+        cdef DTYPE_t16 wr, wc;
+
         for wr in range(wrs):
             for wc in range(wcs):
-                self._populate_glcm_single(pair_i[wr, wc], pair_j[wr, wc])
+                self._populate_glcm_single(pair_i[wr, wc],
+                                           pair_j[wr, wc],
+                                           features[wr, wc])
 
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
     def _populate_glcm_single(self,
                               np.ndarray[DTYPE_t8, ndim=2] pair_i,
-                              np.ndarray[DTYPE_t8, ndim=2] pair_j):
+                              np.ndarray[DTYPE_t8, ndim=2] pair_j,
+                              np.ndarray[DTYPE_ft32, ndim=1] features):
         """
 
         :param pair_i: CR CC
@@ -125,9 +101,25 @@ cdef class GLCM:
             for cc in range(ccs):
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
-                glcm[i, j] += 1
+                features[0] += ((i - j) ** 2)
                 # Contrast += ((i - j) ** 2) / n
                 # ASM += sum of all squared / n**2
+
+
+    @cython.boundscheck(False)
+    @cython.wraparound(False)
+    def _binarize(self, np.ndarray[DTYPE_t32, ndim=3] ar) -> np.ndarray:
+        """ This binarizes the 2D image by its min-max """
+        return (((ar - ar.min()) / ar.max()) * (self.bins - 1)).astype(np.uint8)
+
+    @cython.boundscheck(False)
+    def _pair(self, np.ndarray[DTYPE_t8, ndim=2] ar):
+        ar_w = view_as_windows(ar, (self.diameter, self.diameter))
+        pair_h = (ar_w[:-1, :-1], ar_w[:-1, 1:])
+        pair_v = (ar_w[:-1, :-1], ar_w[1:, :-1])
+        pair_se = (ar_w[:-1, :-1], ar_w[1:, 1:])
+        pair_ne = (ar_w[1:, :-1], ar_w[1:, 1:])
+        return pair_h, pair_v, pair_se, pair_ne
 
 
 
