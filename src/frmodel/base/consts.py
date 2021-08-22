@@ -71,7 +71,7 @@ class CONSTS:
             @staticmethod
             def MEAN(x): return CONSTS.CHN.GLCM._head("MEAN", x)
             @staticmethod
-            def VAR(x): return CONSTS.CHN.GLCM._head("STDEV", x)
+            def VAR(x): return CONSTS.CHN.GLCM._head("VAR", x)
 
         class KMEANS:
             LABEL = "KM_LABEL"
