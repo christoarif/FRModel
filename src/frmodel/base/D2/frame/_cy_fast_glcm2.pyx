@@ -48,7 +48,8 @@ cdef class CyGLCM:
             for ch in range(chs):
                 pairs = self._pair(ar_bin[..., ch])
                 for pair in pairs:
-                    # Pair: Tuple
+                    # Each pair is a tuple
+                    # Tuple of 2 offset images for GLCM calculation.
                     self._populate_glcm(pair[0], pair[1], features[:,:,ch,:])
                     pbar.update()
 
@@ -87,8 +88,10 @@ cdef class CyGLCM:
 
         :param pair_i: CR CC
         :param pair_j: CR CC
+        :param features: SINGULAR
         :return:
         """
+
         cdef DTYPE_t8 crs = pair_i.shape[0]
         cdef DTYPE_t8 ccs = pair_i.shape[1]
         cdef DTYPE_t8 cr, cc
@@ -115,11 +118,13 @@ cdef class CyGLCM:
                 mean_i += i
                 mean_j += j
                 glcm[i, j] += 1
-                glcm[j, i] += 1
+                glcm[j, i] += 1  # Symmetric for ASM.
 
+        # /= n because we summed only
         mean_i /= n
         mean_j /= n
 
+        # MEAN is the average of i, j
         features[MEAN] += (mean_i + mean_j) / 2
 
         for cr in range(crs):
@@ -135,6 +140,7 @@ cdef class CyGLCM:
 
         features[VAR] += (var_i + var_j) / 2
 
+        # Preemptive auxiliary value
         std = sqrt(var_i) * sqrt(var_j)
 
         for cr in range(crs):
@@ -142,12 +148,15 @@ cdef class CyGLCM:
                 i = pair_i[cr, cc]
                 j = pair_j[cr, cc]
 
-                if std != 0.0:
+                if std != 0.0:  # Will explode on 0.0
                     features[CORRELATION] += (i - mean_i) * (j - mean_j) / std
 
+        # Note that because it's a probability, this needs to be /= n
         features[CONTRAST]    /= n
-        features[ASM]         /= (n ** 2) * 2
         features[CORRELATION] /= n
+        # ASM requires /= n twice as its power wraps its probability.
+        # It needs to be divided because it's using a symmetric GLCM.
+        features[ASM]         /= (n / 2) ** 2
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
@@ -157,6 +166,7 @@ cdef class CyGLCM:
 
     @cython.boundscheck(False)
     def _pair(self, np.ndarray[DTYPE_t8, ndim=2] ar):
+
         ar_w = view_as_windows(ar, (self.diameter, self.diameter))
         pair_h = (ar_w[:-1, :-1], ar_w[:-1, 1:])
         pair_v = (ar_w[:-1, :-1], ar_w[1:, :-1])
