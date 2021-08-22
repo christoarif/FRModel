@@ -25,36 +25,6 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
         """ Short forms for easy calling, not recommended to use outside of class scope """
         return self.data_chn(self.CHN.BLUE).data
 
-    def get_all_chns(self: 'Frame2D',
-                     self_: bool = False,
-                     exc_chns: Iterable[Frame2D.CHN] = None,
-                     glcm: _Frame2DChannel.GLCM = None) -> 'Frame2D':
-        """ Gets all channels, excludes any in exc_chns.
-
-        Use get_chns to get selected ones
-
-        Order is given by the argument order.
-        R, G, B, X, Y, H, S, V, EX_G, MEX_G, EX_GR, NDI, VEG,
-        ConR, ConG, ConB, CorrR, CorrG, CorrB, EntR, EntG, EntB
-
-        :param self_: Include current frame
-        :param exc_chns: Excluded Channels
-        :param glcm: GLCM Object
-
-        :returns: Frame2D Object with requested channesls
-        """
-
-        self: 'Frame2D'
-        chns = [self.CHN.XY,
-                self.CHN.EX_G,
-                self.CHN.MEX_G,
-                self.CHN.HSV,
-                self.CHN.NDI,
-                self.CHN.VEG,
-                self.CHN.EX_GR]
-
-        return self.get_all_chns(self_, [c for c in chns if c not in exc_chns], glcm)
-
     def get_chns(self: 'Frame2D',
                  self_: bool = True,
                  chns: Iterable[Frame2D.CHN] = None,
