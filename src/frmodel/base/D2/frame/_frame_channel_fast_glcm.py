@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import ABC
 from dataclasses import dataclass, field
-from typing import Tuple, List, TYPE_CHECKING
+from typing import Tuple, List, TYPE_CHECKING, Union
 
 import numpy as np
 
@@ -30,6 +30,12 @@ class _Frame2DChannelFastGLCM(ABC):
         bins:   int = 8
 
         channels: List[CONSTS.CHN] = field(default_factory=lambda: [])
+
+    def CON(self, chns: Union[List[str], str]):  return self[:, :, [f"CON_{i}" for i in chns] if isinstance(chns, List) else chns]
+    def COR(self, chns: Union[List[str], str]):  return self[:, :, [f"COR_{i}" for i in chns] if isinstance(chns, List) else chns]
+    def ASM(self, chns: Union[List[str], str]):  return self[:, :, [f"ASM_{i}" for i in chns] if isinstance(chns, List) else chns]
+    def MEAN(self, chns: Union[List[str], str]): return self[:, :, [f"MEAN_{i}" for i in chns] if isinstance(chns, List) else chns]
+    def VAR(self, chns: Union[List[str], str]):  return self[:, :, [f"VAR_{i}" for i in chns] if isinstance(chns, List) else chns]
 
     def get_glcm(self: 'Frame2D', glcm:GLCM) -> Tuple[np.ndarray, List[str]]:
         """ This will get the GLCM statistics for this window
