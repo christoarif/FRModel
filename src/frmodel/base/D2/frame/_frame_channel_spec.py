@@ -12,45 +12,53 @@ if TYPE_CHECKING:
 class _Frame2DChannelSpec(ABC):
     """ This is a separate class to handle spectral channels, so as to not clutter the main class too much"""
 
-    def _e(self: 'Frame2D'):
-        """ Short forms for easy calling, not recommended to use outside of class scope """
-        return self.data_chn(self.CHN.RED_EDGE).data
-    def _n(self: 'Frame2D'):
-        """ Short forms for easy calling, not recommended to use outside of class scope """
-        return self.data_chn(self.CHN.NIR).data
+    def RED_EDGE(self: "Frame2D"): return self[..., self.CHN.RED_EDGE]
+    def NIR(self: "Frame2D"):      return self[..., self.CHN.NIR]
+    def NDVI(self: "Frame2D"):     return self._default(self.CHN.NDVI, self._NDVI, self.CHN.NDVI)
+    def BNDVI(self: "Frame2D"):    return self._default(self.CHN.BNDVI, self._BNDVI, self.CHN.BNDVI)
+    def GNDVI(self: "Frame2D"):    return self._default(self.CHN.GNDVI, self._GNDVI, self.CHN.GNDVI)
+    def GARI(self: "Frame2D"):     return self._default(self.CHN.GARI, self._GARI, self.CHN.GARI)
+    def GLI(self: "Frame2D"):      return self._default(self.CHN.GLI, self._GLI, self.CHN.GLI)
+    def GBNDVI(self: "Frame2D"):   return self._default(self.CHN.GBNDVI, self._GBNDVI, self.CHN.GBNDVI)
+    def GRNDVI(self: "Frame2D"):   return self._default(self.CHN.GRNDVI, self._GRNDVI, self.CHN.GRNDVI)
+    def NDRE(self: "Frame2D"):     return self._default(self.CHN.NDRE, self._NDRE, self.CHN.NDRE)
+    def LCI(self: "Frame2D"):      return self._default(self.CHN.LCI, self._LCI, self.CHN.LCI)
+    def MSAVI(self: "Frame2D"):    return self._default(self.CHN.MSAVI, self._MSAVI, self.CHN.MSAVI)
+    def OSAVI(self: "Frame2D"):    return self._default(self.CHN.OSAVI, self._OSAVI, self.CHN.OSAVI)
 
-    def _get_ndvi(self: 'Frame2D') -> np.ndarray:
+    def _NDVI(self: 'Frame2D') -> np.ndarray:
         """ Normalized Difference Vegetation Index """
-        return (self._n() - self._r()) / (self._n() + self._r())
-    def _get_bndvi(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.RED().data) / (self.NIR().data + self.RED().data)
+    def _BNDVI(self: 'Frame2D') -> np.ndarray:
         """ Blue Normalized Difference Vegetation Index """
-        return (self._n() - self._b()) / (self._n() + self._b())
-    def _get_gndvi(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.BLUE().data) / (self.NIR().data + self.BLUE().data)
+    def _GNDVI(self: 'Frame2D') -> np.ndarray:
         """ Green Normalized Difference Vegetation Index """
-        return (self._n() - self._g()) / (self._n() + self._g())
-    def _get_gari(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.GREEN().data) / (self.NIR().data + self.GREEN().data)
+    def _GARI(self: 'Frame2D') -> np.ndarray:
         """ Green Atmospherically Resistant Vegetation Index """
-        b_r = self._b() - self._r()
-        return (self._n() - (self._g() - b_r)) / (self._n() - (self._g() + b_r))
-    def _get_gli(self: 'Frame2D') -> np.ndarray:
+        b_r = self.BLUE().data - self.RED().data
+        return (self.NIR().data - (self.GREEN().data - b_r)) / (self.NIR().data - (self.GREEN().data + b_r))
+    def _GLI(self: 'Frame2D') -> np.ndarray:
         """ Green Leaf Index """
-        return (2 * self._g() - self._r() - self._b()) / (2 * self._g() + self._r() + self._b())
-    def _get_gbndvi(self: 'Frame2D') -> np.ndarray:
+        return (2 * self.GREEN().data - self.RED().data - self.BLUE().data) /\
+               (2 * self.GREEN().data + self.RED().data + self.BLUE().data)
+    def _GBNDVI(self: 'Frame2D') -> np.ndarray:
         """ Green Blue NDVI """
-        return (self._n() - self._b()) / (self._n() + self._b())
-    def _get_grndvi(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.BLUE().data) / (self.NIR().data + self.BLUE().data)
+    def _GRNDVI(self: 'Frame2D') -> np.ndarray:
         """ Green Red NDVI """
-        return (self._n() - self._g()) / (self._n() + self._g())
-    def _get_ndre(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.GREEN().data) / (self.NIR().data + self.GREEN().data)
+    def _NDRE(self: 'Frame2D') -> np.ndarray:
         """ Normalized Difference Red Edge """
-        return (self._n() - self._e()) / (self._n() + self._e())
-    def _get_lci(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.RED_EDGE().data) / (self.NIR().data + self.RED_EDGE().data)
+    def _LCI(self: 'Frame2D') -> np.ndarray:
         """ Leaf Chlorophyll Index  """
-        return (self._n() - self._e()) / (self._n() + self._r())
-    def _get_msavi(self: 'Frame2D') -> np.ndarray:
+        return (self.NIR().data - self.RED_EDGE().data) / (self.NIR().data + self.RED().data)
+    def _MSAVI(self: 'Frame2D') -> np.ndarray:
         """ Modified Soil Adjusted Vegetation Index """
-        aux = (2 * self._n() + 1)
-        return (aux - np.sqrt(aux ** 2 - 8 * (self._n() - self._r()))) / 2
-    def _get_osavi(self: 'Frame2D') -> np.ndarray:
+        aux = (2 * self.NIR().data + 1)
+        return (aux - np.sqrt(aux ** 2 - 8 * (self.NIR().data - self.RED().data))) / 2
+    def _OSAVI(self: 'Frame2D') -> np.ndarray:
         """ Optimized Soil Adjusted Vegetation Index """
-        return (self._n() - self._r()) / (self._n() + self._r() + 0.16)
+        return (self.NIR().data - self.RED().data) / (self.NIR().data + self.RED().data + 0.16)
