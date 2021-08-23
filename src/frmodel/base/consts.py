@@ -6,30 +6,34 @@ class CONSTS:
 
     This is to facilitate magic constants/numbers around the program.
     """
-
+    """
+        "R"  # 650 +- 16 
+        "G"  # 560 +- 16 
+        "B"  # 450 +- 16 
+        "RE"   # 730 +- 16 
+        "NIR"  # 840 +- 26 
+    """
     class CHN:
         X           = "X"
         Y           = "Y"
         Z           = "Z"
         XY          = (X, Y)
         XYZ         = (X, Y, Z)
-        RED         = "R"  # 650 +- 16
-        GREEN       = "G"  # 560 +- 16
-        BLUE        = "B"  # 450 +- 16
+        RED         = "RED"
+        GREEN       = "GREEN"
+        BLUE        = "BLUE"
         RGB         = (RED, GREEN, BLUE)
-        HUE         = "H"
-        SATURATION  = "S"
-        VALUE       = "V"
+        HUE         = "HUE"
+        SATURATION  = "SATURATION"
+        VALUE       = "VALUE"
         HSV         = (HUE, SATURATION, VALUE)
         NDI         = "NDI"
         EX_G        = "EX_G"
         MEX_G       = "MEX_G"
         EX_GR       = "EX_GR"
         VEG         = "VEG"
-
-        # Spectral
-        RED_EDGE    = "RE"   # 730 +- 16
-        NIR         = "NIR"  # 840 +- 26
+        RED_EDGE    = "RE"
+        NIR         = "NIR"
         RGBRENIR    = (RED, GREEN, BLUE, RED_EDGE, NIR)
         NDVI        = "NDVI"
         BNDVI       = "BNDVI"
