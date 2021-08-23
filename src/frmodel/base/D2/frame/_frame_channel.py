@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Tuple, Iterable
+from typing import TYPE_CHECKING, Tuple, Iterable, Callable, List
 
 import numpy as np
 from skimage.color import rgb2hsv
 
 from frmodel.base.D2.frame._frame_channel_fast_glcm import _Frame2DChannelFastGLCM
-# from frmodel.base.D2.frame._frame_channel_glcm import _Frame2DChannelGLCM
 from frmodel.base.D2.frame._frame_channel_spec import _Frame2DChannelSpec
 
 if TYPE_CHECKING:
@@ -15,17 +14,7 @@ if TYPE_CHECKING:
 
 class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
-    def _r(self: 'Frame2D'):
-        """ Short forms for easy calling, not recommended to use outside of class scope """
-        return self.data_chn(self.CHN.RED).data
-    def _g(self: 'Frame2D'):
-        """ Short forms for easy calling, not recommended to use outside of class scope """
-        return self.data_chn(self.CHN.GREEN).data
-    def _b(self: 'Frame2D'):
-        """ Short forms for easy calling, not recommended to use outside of class scope """
-        return self.data_chn(self.CHN.BLUE).data
-
-    def _get_chns(self: 'Frame2D',
+    def get_chns(self: 'Frame2D',
                  self_: bool = True,
                  chns: Iterable[Frame2D.CHN] = None,
                  glcm: _Frame2DChannel.GLCM = None) -> 'Frame2D':
@@ -53,25 +42,25 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
                           self._get_chn_size(chns)])
 
         _chn_mapping: dict = {
-            self.CHN.XY     : self._get_xy,
-            self.CHN.HSV    : self._get_hsv,
-            self.CHN.EX_G   : self._get_ex_g,
-            self.CHN.EX_GR  : self._get_ex_gr,
-            self.CHN.MEX_G  : self._get_mex_g,
-            self.CHN.NDI    : self._get_ndi,
-            self.CHN.VEG    : self._get_ex_g,
+            self.CHN.XY     : self._XY   ,
+            self.CHN.HSV    : self._HSV  ,
+            self.CHN.EX_G   : self._EX_G ,
+            self.CHN.EX_GR  : self._EX_GR,
+            self.CHN.MEX_G  : self._MEX_G,
+            self.CHN.NDI    : self._NDI  ,
+            self.CHN.VEG    : self._VEG  ,
 
-            self.CHN.NDVI   : self._get_ndvi,
-            self.CHN.BNDVI  : self._get_bndvi,
-            self.CHN.GNDVI  : self._get_gndvi,
-            self.CHN.GARI   : self._get_gari,
-            self.CHN.GLI    : self._get_gli,
-            self.CHN.GBNDVI : self._get_gbndvi,
-            self.CHN.GRNDVI : self._get_grndvi,
-            self.CHN.NDRE   : self._get_ndre,
-            self.CHN.LCI    : self._get_lci,
-            self.CHN.MSAVI  : self._get_msavi,
-            self.CHN.OSAVI  : self._get_osavi,
+            self.CHN.NDVI   : self._NDVI,
+            self.CHN.BNDVI  : self._BNDVI,
+            self.CHN.GNDVI  : self._GNDVI,
+            self.CHN.GARI   : self._GARI,
+            self.CHN.GLI    : self._GLI,
+            self.CHN.GBNDVI : self._GBNDVI,
+            self.CHN.GRNDVI : self._GRNDVI,
+            self.CHN.NDRE   : self._NDRE,
+            self.CHN.LCI    : self._LCI,
+            self.CHN.MSAVI  : self._MSAVI,
+            self.CHN.OSAVI  : self._OSAVI,
         }
 
         it = 0
@@ -116,38 +105,60 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
                                   mask=np.repeat(frame.nanmask()[..., np.newaxis], frame.shape[-1]))
         return frame
 
-    def _get_hsv(self: 'Frame2D') -> np.ndarray:
-        """ Creates a HSV
+    def _default(self: "Frame2D", chns,
+                 default_fn: Callable,
+                 default_labels: List[str]):
+        default_labels = [default_labels] if isinstance(default_labels, str) else default_labels
 
-        :return: np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D
-        """
-        return rgb2hsv(self.data_rgb().data)
+        try:
+            return self[..., chns]
+        except KeyError:
+            self._data = np.append(self.data, default_fn(), axis=-1)
+            self.labels.update({k: e + 1 + max(self.labels.values()) for e, k in enumerate(default_labels)})
+            return self[..., chns]
 
-    def _get_ex_g(self: 'Frame2D') -> np.ndarray:
+    def X(self: "Frame2D"):          return self._default(self.CHN.X, self._XY, self.CHN.XY)
+    def Y(self: "Frame2D"):          return self._default(self.CHN.Y, self._XY, self.CHN.XY)
+    def XY(self: "Frame2D"):         return self._default(self.CHN.XY, self._XY, self.CHN.XY)
+    def Z(self: "Frame2D"):          return self[..., self.CHN.Z]
+    def RED(self: "Frame2D"):        return self[..., self.CHN.RED]
+    def GREEN(self: "Frame2D"):      return self[..., self.CHN.GREEN]
+    def BLUE(self: "Frame2D"):       return self[..., self.CHN.BLUE]
+    def RGB(self: "Frame2D"):        return self[..., self.CHN.RGB]
+    def RGBRENIR(self: "Frame2D"):   return self[..., self.CHN.RGBRENIR]
+    def HUE(self: "Frame2D"):        return self._default(self.CHN.HUE, self._HSV, self.CHN.HSV)
+    def SATURATION(self: "Frame2D"): return self._default(self.CHN.SATURATION, self._HSV,  self.CHN.HSV)
+    def VALUE(self: "Frame2D"):      return self._default(self.CHN.VALUE, self._HSV,  self.CHN.VALUE)
+    def NDI(self: "Frame2D"):        return self._default(self.CHN.NDI, self._NDI, self.CHN.NDI)
+    def EX_G(self: "Frame2D"):       return self._default(self.CHN.EX_G, self._EX_G, self.CHN.EX_G)
+    def MEX_G(self: "Frame2D"):      return self._default(self.CHN.MEX_G, self._MEX_G, self.CHN.MEX_G)
+    def EX_GR(self: "Frame2D"):      return self._default(self.CHN.EX_GR, self._EX_GR, self.CHN.EX_GR)
+    def VEG(self: "Frame2D"):        return self._default(self.CHN.VEG, self._VEG, self.CHN.VEG)
+
+    def _HSV(self: 'Frame2D') -> np.ndarray:
+        """ Creates a HSV """
+        return rgb2hsv(self.RGB().data)
+
+    def _EX_G(self: 'Frame2D') -> np.ndarray:
         """ Calculates the excessive green index
 
-        Original: 2g - 1r - 1b
-
-        :return: np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D
+        2g - 1r - 1b
         """
 
-        return 2 * self.data_chn(self.CHN.RED).data - \
-               self.data_chn(self.CHN.GREEN).data - \
-               self.data_chn(self.CHN.BLUE).data
+        return 2 * self.RED().data - \
+               self.GREEN().data - \
+               self.BLUE().data
 
-    def _get_mex_g(self: 'Frame2D') -> np.ndarray:
+    def _MEX_G(self: 'Frame2D') -> np.ndarray:
         """ Calculates the Modified excessive green index
 
-        1.262g - 0.884r - 0.331b
+        1.262g - 0.884r - 0.331b"""
 
-        :return: np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D
-        """
+        return 1.262 * self.RED().data - \
+               0.884 * self.GREEN().data - \
+               0.331 * self.BLUE().data
 
-        return 1.262 * self.data_chn(self.CHN.RED).data - \
-               0.884 * self.data_chn(self.CHN.GREEN).data - \
-               0.331 * self.data_chn(self.CHN.BLUE).data
-
-    def _get_ex_gr(self: 'Frame2D') -> np.ndarray:
+    def _EX_GR(self: 'Frame2D') -> np.ndarray:
         """ Calculates the excessive green minus excess red index
 
         2g - r - b - 1.4r + g = 3g - 2.4r - b
@@ -155,11 +166,11 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
         :return: np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D
         """
 
-        return 3   * self.data_chn(self.CHN.RED).data - \
-               2.4 * self.data_chn(self.CHN.GREEN).data - \
-                     self.data_chn(self.CHN.BLUE).data
+        return 3   * self.RED().data - \
+               2.4 * self.GREEN().data - \
+                     self.BLUE().data
 
-    def _get_ndi(self: 'Frame2D') -> np.ndarray:
+    def _NDI(self: 'Frame2D') -> np.ndarray:
         """ Calculates the Normalized Difference Index
 
         (g - r) / (g + r)
@@ -169,15 +180,15 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
         with np.errstate(divide='ignore', invalid='ignore'):
             x = np.nan_to_num(
-                np.true_divide(self.data_chn(self.CHN.GREEN).data.astype(np.int) -
-                               self.data_chn(self.CHN.RED)  .data.astype(np.int),
-                               self.data_chn(self.CHN.GREEN).data.astype(np.int) +
-                               self.data_chn(self.CHN.RED)  .data.astype(np.int)),
+                np.true_divide(self.GREEN().data.astype(np.int) -
+                               self.RED  ().data.astype(np.int),
+                               self.GREEN().data.astype(np.int) +
+                               self.RED  ().data.astype(np.int)),
                 copy=False, nan=0, neginf=0, posinf=0)
 
         return x
 
-    def _get_veg(self: 'Frame2D', const_a: float = 0.667) -> np.ndarray:
+    def _VEG(self: 'Frame2D', const_a: float = 0.667) -> np.ndarray:
         """ Calculates the Vegetative Index
 
         g / {(r^a) * [b^(1 - a)]}
@@ -187,13 +198,13 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
         """
 
         with np.errstate(divide='ignore', invalid='ignore'):
-            x = np.nan_to_num(self.data_chn(self.CHN.GREEN).data.astype(np.float) /
-                              (np.power(self.data_chn(self.CHN.RED).data.astype(np.float), const_a) *
-                               np.power(self.data_chn(self.CHN.BLUE).data.astype(np.float), 1 - const_a)),
+            x = np.nan_to_num(self.GREEN().data.astype(np.float) /
+                              (np.power(self.RED().data.astype(np.float), const_a) *
+                               np.power(self.BLUE().data.astype(np.float), 1 - const_a)),
                               copy=False, nan=0, neginf=0, posinf=0)
         return x
 
-    def _get_xy(self: 'Frame2D') -> np.ndarray:
+    def _XY(self: 'Frame2D') -> np.ndarray:
         """ Creates the XY Coord Array
 
         :return: np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D
