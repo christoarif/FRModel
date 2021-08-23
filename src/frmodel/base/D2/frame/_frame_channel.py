@@ -15,14 +15,10 @@ if TYPE_CHECKING:
 class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
     def get_chns(self: 'Frame2D',
-                 chns: Iterable[Frame2D.CHN] = ()) -> 'Frame2D':
+                 chns: Iterable[Frame2D.CHN, str] = ()) -> 'Frame2D':
         """ Gets selected channels
 
         Use _get_all_chns to get all but selected ones
-
-        Order is given by the argument order.
-        R, G, B, H, S, V, EX_G, MEX_G, EX_GR, NDI, VEG, X, Y,
-        ConR, ConG, ConB, CorrR, CorrG, CorrB, EntR, EntG, EntB
 
         :param chns: Channels, can be also in strings.
         :returns Frame2D: Itself as a reference.
@@ -32,7 +28,7 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
         for chn in chns:
             self.__getattribute__(chn)()
-            
+
         return self
 
     def _default(self: "Frame2D", chns,
