@@ -16,6 +16,8 @@ from frmodel.base.D2.frame._frame_partition import _Frame2DPartition
 # noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_plot import _Frame2DPlot
 # noinspection PyProtectedMember
+from frmodel.base.D2.frame._frame_props import _Frame2DProps
+# noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_scaling import _Frame2DScaling
 # noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_scoring import _Frame2DScoring
@@ -207,7 +209,7 @@ class Frame2D(_Frame2DLoader,
             return Frame2D(self.data.__getitem__(*args, **kwargs), self.labels)
         elif len(arg) == 3:
             # Handle Channel Indexing here
-            if isinstance(arg[2], List):
+            if isinstance(arg[2], (List, Tuple)):
                 # Format f[___, ___, []]
 
                 # Cast Set to find out if list is unique.
