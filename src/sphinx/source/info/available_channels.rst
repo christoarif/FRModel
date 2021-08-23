@@ -8,6 +8,12 @@ The string version is exactly the name itself. ``f.CHN.RED == "RED"``
 
 In doubt, use the full ``f.CHN.XX`` call as autocomplete will help you.
 
+=================
+Non-GLCM Channels
+=================
+
+The syntax is ``f.CHN.XX``.
+
 +--------------+------------------------------------------------------+--------+
 | CHN Constant | Description                                          | Layers |
 +==============+======================================================+========+
@@ -17,7 +23,13 @@ In doubt, use the full ``f.CHN.XX`` call as autocomplete will help you.
 +--------------+------------------------------------------------------+--------+
 | BLUE         | Blue Channel                                         | 1      |
 +--------------+------------------------------------------------------+--------+
-| RGB          | A Tuple of all Red, Green, Blue Channels             | 3      |
+| RGB          | A Tuple of Red, Green, Blue Channels                 | 3      |
++--------------+------------------------------------------------------+--------+
+| RED_EDGE     | Red Edge Channel                                     | 1      |
++--------------+------------------------------------------------------+--------+
+| NIR          | Near Infrared Channel                                | 1      |
++--------------+------------------------------------------------------+--------+
+| RGBRENIR     | A Tuple of Red, Green, Blue, Red Edge, NIR Channels  | 5      |
 +--------------+------------------------------------------------------+--------+
 | X            | X Position                                           | 1      |
 +--------------+------------------------------------------------------+--------+
@@ -65,3 +77,29 @@ In doubt, use the full ``f.CHN.XX`` call as autocomplete will help you.
 +--------------+------------------------------------------------------+--------+
 | OSAVI        | Optimized Soil Adjusted Vegetation Index Channel     | 1      |
 +--------------+------------------------------------------------------+--------+
+
+=============
+GLCM Channels
+=============
+
+For the channel label, it'll be in the format ``FEATURE_CHANNEL``.
+
+For example, ``CON_RED``, ``COR_GREEN``.
+
+The syntax to retrieve GLCM Feature of CHN is ``f.FEATURE(List[CHN])``.
+
+For example ``f.ASM([f.CHN.RED, f.CHN.GREEN])``.
+
++--------------+-----------------------+
+| GLCM Feature | Description           |
++==============+=======================+
+| CON          | Contrast              |
++--------------+-----------------------+
+| ASM          | Angular Second Moment |
++--------------+-----------------------+
+| COR          | Correlation           |
++--------------+-----------------------+
+| MEAN         | GLCM Mean             |
++--------------+-----------------------+
+| VAR          | GLCM Variance         |
++--------------+-----------------------+
