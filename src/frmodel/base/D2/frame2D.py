@@ -16,8 +16,6 @@ from frmodel.base.D2.frame._frame_partition import _Frame2DPartition
 # noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_plot import _Frame2DPlot
 # noinspection PyProtectedMember
-from frmodel.base.D2.frame._frame_props import _Frame2DProps
-# noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_scaling import _Frame2DScaling
 # noinspection PyProtectedMember
 from frmodel.base.D2.frame._frame_scoring import _Frame2DScoring
