@@ -72,3 +72,6 @@ def test_all_chns(f, c):
     assert f.Y().shape[-1]          == 1; assert f.shape[-1] == 26
     assert f.XY().shape[-1]         == 2; assert f.shape[-1] == 26
 
+def test_get_chns(f, c):
+    f.get_chns(chns=[f.CHN.RED])
+    assert f.shape[-1] == 5

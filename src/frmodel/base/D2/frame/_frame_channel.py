@@ -15,7 +15,6 @@ if TYPE_CHECKING:
 class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
     def get_chns(self: 'Frame2D',
-                 self_: bool = True,
                  chns: Iterable[Frame2D.CHN] = None,
                  glcm: _Frame2DChannel.GLCM = None) -> 'Frame2D':
         """ Gets selected channels
@@ -33,14 +32,7 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
         :returns
         """
 
-        labels = []
         chns = [] if not chns else chns
-
-        self: 'Frame2D'
-        data = np.zeros([*self.shape[0:2],
-                          self._get_chn_size(chns) + self.shape[-1] if self_ else
-                          self._get_chn_size(chns)])
-
         _chn_mapping: dict = {
             self.CHN.XY     : self._XY   ,
             self.CHN.HSV    : self._HSV  ,
@@ -63,47 +55,24 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
             self.CHN.OSAVI  : self._OSAVI,
         }
 
-        it = 0
-
-        if self_:
-            data[..., it:self.shape[-1]] = self.data
-            labels = [self.labels.keys()]
-            it += self.shape[-1]
-
         for chn in chns:
-            length = len(chn) if isinstance(chn, Tuple) else 1
             try:
-                try:
-                    # The case where the channel is already calculated
-                    data[..., it:it+length] = self.data_chn(chn).data
-                except KeyError:
-                    # The case where the channel is missing
-                    data[..., it:it+length] = _chn_mapping[chn]()
-                labels.append(chn)
+                _chn_mapping[chn]()
             except KeyError:
-                if chn in (self.CHN.X, self.CHN.Y):
-                    raise KeyError(f"You cannot get {chn} separately from XY, call with CHN.HSV")
-                elif chn in self.CHN.HSV:
-                    raise KeyError(f"You cannot get {chn} separately from HSV, call with CHN.HSV")
-                else:
-                    raise KeyError(f"Failed to find channel {chn}, I recommend to use CONSTS.CHN to get the correct"
-                                   f"strings to call")
-            it += length
+                continue
 
-        frame: 'Frame2D' = self.create(data=data, labels=labels)
+        # if glcm:
+        #     if frame.shape[-1] == 0:
+        #         # Cannot convolute a 0 set. We'll still entertain _get_glcm only.
+        #         frame = self.create(*self.get_glcm(glcm))
+        #     else:
+        #         frame = frame.astype(np.float)
+        #         frame = frame.crop_glcm(glcm.radius)\
+        #             .append(*self.get_glcm(glcm))
 
-        if glcm:
-            if frame.shape[-1] == 0:
-                # Cannot convolute a 0 set. We'll still entertain _get_glcm only.
-                frame = self.create(*self.get_glcm(glcm))
-            else:
-                frame = frame.astype(np.float)
-                frame = frame.crop_glcm(glcm.radius)\
-                    .append(*self.get_glcm(glcm))
-
-        frame._data = np.ma.array(frame.data,
-                                  mask=np.repeat(frame.nanmask()[..., np.newaxis], frame.shape[-1]))
-        return frame
+        # frame._data = np.ma.array(frame.data,
+        #                           mask=np.repeat(frame.nanmask()[..., np.newaxis], frame.shape[-1]))
+        return self
 
     def _default(self: "Frame2D", chns,
                  default_fn: Callable,
