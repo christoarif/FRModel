@@ -80,4 +80,4 @@ It references this tutorial `GLCM Texture: A Tutorial v. 3.0 March 2017 <https:/
 Module Info
 ===========
 
-.. automodule:: frmodel.base.D2.frame._frame_channel_glcm
+.. automodule:: frmodel.base.D2.frame._frame_channel_fast_glcm
