@@ -32,7 +32,7 @@ class CONSTS:
         MEX_G       = "MEX_G"
         EX_GR       = "EX_GR"
         VEG         = "VEG"
-        RED_EDGE    = "RE"
+        RED_EDGE    = "RED_EDGE"
         NIR         = "NIR"
         RGBRENIR    = (RED, GREEN, BLUE, RED_EDGE, NIR)
         NDVI        = "NDVI"
