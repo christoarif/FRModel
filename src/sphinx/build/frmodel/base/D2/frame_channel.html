@@ -209,168 +209,40 @@
 <h2>Getting Channels<a class="headerlink" href="#getting-channels" title="Permalink to this headline">¶</a></h2>
 <p><strong>&gt;= 0.1.0</strong></p>
 <p>There is a new convention of getting channels.</p>
-<p>View some examples here <a class="reference internal" href="../../../info/getting_started.html"><span class="doc">Getting Started</span></a></p>
+<p>View some examples here: <a class="reference internal" href="../../../info/getting_started.html"><span class="doc">Getting Started</span></a></p>
 <p>The new format, uses the following calling template</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">:</span> <span class="n">Frame2D</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="n">self_</span><span class="p">:</span><span class="nb">bool</span><span class="p">,</span> <span class="n">chns</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">CHN</span><span class="p">],</span> <span class="n">glcm</span><span class="p">:</span> <span class="n">GLCM</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="n">chns</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span>
 </pre></div>
 </div>
+<p><em>The</em> <code class="docutils literal notranslate"><span class="pre">f.CHN</span></code> <em>consts are essentially strings</em></p>
 <p>For example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">:</span> <span class="n">Frame2D</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="n">self_</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chns</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">HSV</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">EX_G</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">VEG</span><span class="p">])</span>
+<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">HSV</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">EX_G</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">VEG</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">CHN</span></code> argument can be grabbed from <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code> class or any instance, or <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">consts</span> <span class="pre">import</span> <span class="pre">CONSTS</span></code>, though
-the latter method is not recommended as it’s verbose.</p>
-<p>These <code class="docutils literal notranslate"><span class="pre">CHN</span></code> are actually strings, hence it’s perfectly valid to call as</p>
+<p><code class="docutils literal notranslate"><span class="pre">f.CHN.XX</span></code> are all <code class="docutils literal notranslate"><span class="pre">str</span></code> variants, so you can also call using strings, though, will lack validation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">:</span> <span class="n">Frame2D</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="n">self_</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">])</span> <span class="c1"># Other arguments omitted</span>
+<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="n">self_</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;HUE&#39;</span><span class="p">,</span> <span class="s1">&#39;SATURATION&#39;</span><span class="p">])</span> <span class="c1"># Other arguments omitted</span>
 </pre></div>
 </div>
-<p>However, it’s not recommended as it’s prone to capitalization errors and typos.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 71%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>CHN Constant</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Layers</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>RED</p></td>
-<td><p>Red Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>GREEN</p></td>
-<td><p>Green Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>BLUE</p></td>
-<td><p>Blue Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>RGB</p></td>
-<td><p>A Tuple of all Red, Green, Blue Channels</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>X</p></td>
-<td><p>X Position</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>Y</p></td>
-<td><p>Y Position</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>XY</p></td>
-<td><p>A Tuple of X, Y Channels</p></td>
-<td><p>2</p></td>
-</tr>
-<tr class="row-odd"><td><p>HUE</p></td>
-<td><p>Hue Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>SATURATION</p></td>
-<td><p>Saturation Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>VALUE</p></td>
-<td><p>Value Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>HSV</p></td>
-<td><p>A Tuple of Hue, Saturation, Value Channels</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-odd"><td><p>NDI</p></td>
-<td><p>Normalized Difference Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>EX_G</p></td>
-<td><p>Excess Green Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>MEX_G</p></td>
-<td><p>Modified Excess Green Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>EX_GR</p></td>
-<td><p>Excess Green Minus Red Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>VEG</p></td>
-<td><p>Vegetation Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>NDVI</p></td>
-<td><p>Normalized Difference Vegetation Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>BNDVI</p></td>
-<td><p>Blue Normalized Difference Vegetation Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>GNDVI</p></td>
-<td><p>Green Normalized Difference Vegetation Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>GARO</p></td>
-<td><p>Green Atmospherically Resistant Vegetation Index</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>GLI</p></td>
-<td><p>Green Leaf Index</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>GBNDVI</p></td>
-<td><p>Green Blue NDVI</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>GRNDVI</p></td>
-<td><p>Green Red NDVI</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>NDRE</p></td>
-<td><p>Normalized Difference Red Edge Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>LCI</p></td>
-<td><p>Leaf Chlorophyll Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-odd"><td><p>MSAVI</p></td>
-<td><p>Modified Soil Adjusted Vegetation Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>OSAVI</p></td>
-<td><p>Optimized Soil Adjusted Vegetation Index Channel</p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">get_all_chns</span></code> and <code class="docutils literal notranslate"><span class="pre">get_chns</span></code> gets all channels above.</p>
-<p>The difference between those 2 is that, with <code class="docutils literal notranslate"><span class="pre">get_all_chns</span></code> you exclude channels you don’t need,
-depending on your choices, one may be more succinct than the other.</p>
 </div>
 <div class="section" id="slicing">
 <h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
 <p><em>New in 0.0.6</em></p>
-<p>You can now slice like NumPy for the dimensions
-.. code-block:: python</p>
-<blockquote>
-<div><p>f: Frame2D
-f[…, f.CHN.RED]
-f[0:100, 200:300, f.CHN.RGB]</p>
-</div></blockquote>
+<p>You can now slice like NumPy for the dimensions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">:</span> <span class="n">Frame2D</span>
+<span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">RED</span><span class="p">]</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">RGB</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="retriving-glcm">
 <h2>Retriving GLCM<a class="headerlink" href="#retriving-glcm" title="Permalink to this headline">¶</a></h2>
-<p>For GLCM, you need to specify its texture and the channel</p>
+<p>For GLCM, you need to specify its feature and the channel.</p>
+<p>See the available features here: <a class="reference internal" href="../../../info/available_channels.html"><span class="doc">Available Channels</span></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">:</span> <span class="n">Frame2D</span>
-<span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">GLCM</span><span class="o">.</span><span class="n">COR</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">RED</span><span class="p">)]</span>
+<span class="n">f</span><span class="o">.</span><span class="n">COR</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">CHN</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -494,7 +366,7 @@ f[0:100, 200:300, f.CHN.RGB]</p>
 <dl class="py class">
 <dt id="frmodel.base.D2.frame._frame_channel._Frame2DChannel">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">frmodel.base.D2.frame._frame_channel.</span></code><code class="sig-name descname"><span class="pre">_Frame2DChannel</span></code><a class="headerlink" href="#frmodel.base.D2.frame._frame_channel._Frame2DChannel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">frmodel.base.D2.frame._frame_channel_fast_glcm._Frame2DChannelFastGLCM</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frmodel.base.D2.frame._frame_channel_spec._Frame2DChannelSpec</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="frame_channel_glcm.html#frmodel.base.D2.frame._frame_channel_fast_glcm._Frame2DChannelFastGLCM" title="frmodel.base.D2.frame._frame_channel_fast_glcm._Frame2DChannelFastGLCM"><code class="xref py py-class docutils literal notranslate"><span class="pre">frmodel.base.D2.frame._frame_channel_fast_glcm._Frame2DChannelFastGLCM</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frmodel.base.D2.frame._frame_channel_spec._Frame2DChannelSpec</span></code></p>
 <dl class="py method">
 <dt id="frmodel.base.D2.frame._frame_channel._Frame2DChannel._EX_G">
 <code class="sig-name descname"><span class="pre">_EX_G</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame._frame_channel._Frame2DChannel._EX_G" title="Permalink to this definition">¶</a></dt>
@@ -567,12 +439,9 @@ f[0:100, 200:300, f.CHN.RGB]</p>
 
 <dl class="py method">
 <dt id="frmodel.base.D2.frame._frame_channel._Frame2DChannel.get_chns">
-<code class="sig-name descname"><span class="pre">get_chns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Frame2D.CHN</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Frame2D</span><a class="headerlink" href="#frmodel.base.D2.frame._frame_channel._Frame2DChannel.get_chns" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_chns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Frame2D.CHN</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Frame2D</span><a class="headerlink" href="#frmodel.base.D2.frame._frame_channel._Frame2DChannel.get_chns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets selected channels</p>
 <p>Use _get_all_chns to get all but selected ones</p>
-<p>Order is given by the argument order.
-R, G, B, H, S, V, EX_G, MEX_G, EX_GR, NDI, VEG, X, Y,
-ConR, ConG, ConB, CorrR, CorrG, CorrB, EntR, EntG, EntB</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>chns</strong> – Channels, can be also in strings.</p>

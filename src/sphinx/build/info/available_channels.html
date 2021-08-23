@@ -33,7 +33,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ChangeLog" href="changelog.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -77,8 +79,17 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../info.html">Information</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../info.html">Information</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html"> Getting Started</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Available Channels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#non-glcm-channels">Non-GLCM Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#glcm-channels">GLCM Channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html"> Changelog</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../frmodel/base.html">Base</a></li>
 </ul>
 
@@ -125,6 +136,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../info.html">Information</a> &raquo;</li>
+        
       <li>Available Channels</li>
     
     
@@ -146,97 +159,182 @@
             
   <div class="section" id="available-channels">
 <h1>Available Channels<a class="headerlink" href="#available-channels" title="Permalink to this headline">¶</a></h1>
-<p>The main class to use would be <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code>.</p>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="loading-an-image">
-<h3>Loading an Image<a class="headerlink" href="#loading-an-image" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">frame</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-</pre></div>
+<p>Here’s the glossary of Channels retrievable.</p>
+<p>The string version is exactly the name itself. <code class="docutils literal notranslate"><span class="pre">f.CHN.RED</span> <span class="pre">==</span> <span class="pre">&quot;RED&quot;</span></code></p>
+<p>In doubt, use the full <code class="docutils literal notranslate"><span class="pre">f.CHN.XX</span></code> call as autocomplete will help you.</p>
+<div class="section" id="non-glcm-channels">
+<h2>Non-GLCM Channels<a class="headerlink" href="#non-glcm-channels" title="Permalink to this headline">¶</a></h2>
+<p>The syntax is <code class="docutils literal notranslate"><span class="pre">f.CHN.XX</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 71%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CHN Constant</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RED</p></td>
+<td><p>Red Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GREEN</p></td>
+<td><p>Green Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>BLUE</p></td>
+<td><p>Blue Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RGB</p></td>
+<td><p>A Tuple of Red, Green, Blue Channels</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>RED_EDGE</p></td>
+<td><p>Red Edge Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NIR</p></td>
+<td><p>Near Infrared Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>RGBRENIR</p></td>
+<td><p>A Tuple of Red, Green, Blue, Red Edge, NIR Channels</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>X</p></td>
+<td><p>X Position</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Y</p></td>
+<td><p>Y Position</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>XY</p></td>
+<td><p>A Tuple of X, Y Channels</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>HUE</p></td>
+<td><p>Hue Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>SATURATION</p></td>
+<td><p>Saturation Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>VALUE</p></td>
+<td><p>Value Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>HSV</p></td>
+<td><p>A Tuple of Hue, Saturation, Value Channels</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>NDI</p></td>
+<td><p>Normalized Difference Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>EX_G</p></td>
+<td><p>Excess Green Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>MEX_G</p></td>
+<td><p>Modified Excess Green Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>EX_GR</p></td>
+<td><p>Excess Green Minus Red Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>VEG</p></td>
+<td><p>Vegetation Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NDVI</p></td>
+<td><p>Normalized Difference Vegetation Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>BNDVI</p></td>
+<td><p>Blue Normalized Difference Vegetation Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GNDVI</p></td>
+<td><p>Green Normalized Difference Vegetation Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>GARO</p></td>
+<td><p>Green Atmospherically Resistant Vegetation Index</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GLI</p></td>
+<td><p>Green Leaf Index</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>GBNDVI</p></td>
+<td><p>Green Blue NDVI</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GRNDVI</p></td>
+<td><p>Green Red NDVI</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>NDRE</p></td>
+<td><p>Normalized Difference Red Edge Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>LCI</p></td>
+<td><p>Leaf Chlorophyll Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>MSAVI</p></td>
+<td><p>Modified Soil Adjusted Vegetation Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>OSAVI</p></td>
+<td><p>Optimized Soil Adjusted Vegetation Index Channel</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Here, we get an RGB Image and load it as a <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code>.</p>
-</div>
-<div class="section" id="retrieving-np-ndarray">
-<h3>Retrieving np.ndarray<a class="headerlink" href="#retrieving-np-ndarray" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> is store inside <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code> via a <code class="docutils literal notranslate"><span class="pre">.data</span></code> property call.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">frame</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="calculating-non-glcm-channels">
-<h3>Calculating Non-GLCM Channels<a class="headerlink" href="#calculating-non-glcm-channels" title="Permalink to this headline">¶</a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code> there is a new standard of channel calculation.</p>
-<p>This is so that the calculation call does not return a new Frame, instead, just appends to the current Frame.</p>
-<p>The following is how you get <strong>Hue</strong> from a <strong>RGB</strong> image.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="s1">&#39;HUE&#39;</span><span class="p">)</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="s1">&#39;HUE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-<p>In the above code, <strong>Hue</strong> is calculated, and retrieved as an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p>
-</div>
-<div class="section" id="shorthands">
-<h3>Shorthands<a class="headerlink" href="#shorthands" title="Permalink to this headline">¶</a></h3>
-<p>In the case where you want to retrieve a single channel, it’s easy to do so.</p>
-<p><em>The call will also automatically call the respective calculations to retrieve it.</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">ar1</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">HUE</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>
-
-<span class="n">ar2</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="s1">&#39;HUE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-<p>When you call <code class="docutils literal notranslate"><span class="pre">HUE()</span></code>, internally, the <strong>Hue</strong> is calculated and appended to <code class="docutils literal notranslate"><span class="pre">f</span></code> as reference.</p>
-<p>Thus <code class="docutils literal notranslate"><span class="pre">f</span></code> will have <strong>Hue</strong> as a channel.</p>
-</div>
-</div>
-<div class="section" id="concurrent-calculations">
-<h2>Concurrent Calculations<a class="headerlink" href="#concurrent-calculations" title="Permalink to this headline">¶</a></h2>
-<p>Some channels <strong>have</strong> to be calculated together.</p>
-<p>For example, when you retrieve <strong>Hue</strong>, the <strong>Saturation</strong> and <strong>Value</strong> will also be calculated together.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_chns</span><span class="p">(</span><span class="s1">&#39;HUE&#39;</span><span class="p">)</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="s1">&#39;SATURATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="glcm">
-<h2>GLCM<a class="headerlink" href="#glcm" title="Permalink to this headline">¶</a></h2>
-<p>GLCM is similar to <code class="docutils literal notranslate"><span class="pre">get_chns</span></code>. Using <code class="docutils literal notranslate"><span class="pre">get_glcm</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_glcm</span><span class="p">(</span><span class="n">chns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RED&#39;</span><span class="p">,</span> <span class="s1">&#39;BLUE&#39;</span><span class="p">])</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">CON</span><span class="p">(</span><span class="s1">&#39;RED&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">get_glcm</span></code> calculates its features, one of which is <code class="docutils literal notranslate"><span class="pre">CON</span></code>, and we retrieve it using the <code class="docutils literal notranslate"><span class="pre">.CON</span></code> method.</p>
-<div class="section" id="shorthand-full-call">
-<h3>Shorthand &amp; Full Call<a class="headerlink" href="#shorthand-full-call" title="Permalink to this headline">¶</a></h3>
-<p>You can retrieve the channel in both ways.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">get_glcm</span><span class="p">(</span><span class="n">chns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RED&#39;</span><span class="p">,</span> <span class="s1">&#39;BLUE&#39;</span><span class="p">])</span>
-
-<span class="c1"># Short Hand</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">CON</span><span class="p">([</span><span class="s1">&#39;RED&#39;</span><span class="p">,</span> <span class="s1">&#39;BLUE&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">data</span>
-<span class="c1"># Full Call</span>
-<span class="n">ar</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;CON_RED&#39;</span><span class="p">,</span> <span class="s1">&#39;CON_BLUE&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-<p>Notice the Full Call is more verbose, but has a more extensible API.</p>
-</div>
+<div class="section" id="glcm-channels">
+<h2>GLCM Channels<a class="headerlink" href="#glcm-channels" title="Permalink to this headline">¶</a></h2>
+<p>For the channel label, it’ll be in the format <code class="docutils literal notranslate"><span class="pre">FEATURE_CHANNEL</span></code>.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">CON_RED</span></code>, <code class="docutils literal notranslate"><span class="pre">COR_GREEN</span></code>.</p>
+<p>The syntax to retrieve GLCM Feature of CHN is <code class="docutils literal notranslate"><span class="pre">f.FEATURE(List[CHN])</span></code>.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">f.ASM([f.CHN.RED,</span> <span class="pre">f.CHN.GREEN])</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>GLCM Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CON</p></td>
+<td><p>Contrast</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASM</p></td>
+<td><p>Angular Second Moment</p></td>
+</tr>
+<tr class="row-even"><td><p>COR</p></td>
+<td><p>Correlation</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEAN</p></td>
+<td><p>GLCM Mean</p></td>
+</tr>
+<tr class="row-even"><td><p>VAR</p></td>
+<td><p>GLCM Variance</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -245,6 +343,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changelog.html" class="btn btn-neutral float-right" title="ChangeLog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
