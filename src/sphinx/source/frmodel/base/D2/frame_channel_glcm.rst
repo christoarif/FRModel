@@ -2,25 +2,27 @@
 Frame Gray Level Co-occurrence Matrix
 #####################################
 
-*The GLCM2D Class is deprecated from 0.0.3 onwards, replaced by the current in-built methods*
-*Selective GLCM deprecated from 0.0.6 onwards, the GLCM arguments are replaced with channel.*
+**>= 0.1.0 deprecates the GLCM class to support** ``get_glcm`` **as a separate call.**
 
-==========
-GLCM Class
-==========
+============
+GLCM Getting
+============
 
-*New in 0.0.5*
+**>= 0.1.0**
 
-Due to the ever expanding number of **vegetation indexes**, **0.0.5** introduces a new methodology, detailed here
-`Pull Request #67 <https://github.com/Eve-ning/FRModel/pull/67>`_.
+There is a new convention of getting channels, including GLCM.
 
-Retrieved using ``Frame2D.GLCM``.
+View some GLCM examples here: :doc:`../../../info/getting_started`
 
-The purpose of getting this class is to pass as an argument for GLCM generation.
+GLCM is similar to ``get_chns``. Using ``get_glcm``.
 
-*From 0.0.6 onwards*
+.. code-block:: python
 
-For every recieved ``channel``, all 5 features are now all generated regardless.
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    f.get_glcm(chns=['RED', 'BLUE'])
+    ar = f.CON('RED').data
 
 =======
 Binning
@@ -31,30 +33,14 @@ Binning
 Using the argument ``bins`` in the GLCM Class, data is binned before being processed.
 This makes GLCM extremely fast.
 
-Recommended to use 4, 8, 16.
+It is recommended to bin to small values such as 4, 8, 16.
 
 =======
 Example
 =======
 
-``<0.0.5`` code
-.. code-block:: python
+``<=0.1.0`` code
 
-    out = f.get_chns(glcm_con=True, glcm_cor=True, glcm_ent=True,
-                     glcm_by_x=1, glcm_by_y=1, glcm_radius=25, glcm_verbose=True,
-                     glcm_entropy_mp=True, glcm_entropy_mp_procs=2)
-
-``>=0.0.5`` code
-.. code-block:: python
-
-    glcm = f.GLCM(by=1, radius=25, verbose=True,
-                  contrast=[f.CHN.RGB],
-                  correlation=[f.CHN.RGB],
-                  entropy=[f.CHN.RGB])
-
-    frame = f.get_chns(glcm=glcm)
-
-``>=0.0.6`` code
 .. code-block:: python
 
     glcm = f.GLCM(by=1, radius=2, verbose=True, bins=8
@@ -62,16 +48,24 @@ Example
 
     frame = f.get_chns(glcm=glcm)
 
+``<=0.1.0`` code
+
+.. code-block:: python
+
+    g.get_glcm(chns=f.CHN.RGB, radius=2, bins=8)
+
 Assuming f is a ``Frame2D``.
 
-- This grabs the GLCM features.
-- The GLCM is offset by 1 x 1.
-- The Neighbour Convolution radius is 25.
+- This grabs the GLCM features for all RGB Channels.
+- The GLCM is offset by 1 x 1. (`default for >=0.1.0`)
+- The Neighbour Convolution radius is 2.
 - The function will output its progress with a progress bar.
-- GLCM Entropy will use multiprocessing to speed up the entropy loop
-- It will use 2 processes to loop.
 
-Note that for ``0.0.5`` GLCM is not strictly for RGB, however, entropy must be a combination of RGB.
+.. code-block::
+
+    GLCM Progress: 100% 20/20 [00:01<00:00, 14.91it/s]
+
+Each increment is a GLCM direction calculated for a channel.
 
 =========
 Algorithm
