@@ -28,34 +28,11 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
         :returns Frame2D: Itself as a reference.
         """
 
-        chns = [] if not chns else chns
-        _chn_mapping: dict = {
-            self.CHN.XY     : self._XY   ,
-            self.CHN.HSV    : self._HSV  ,
-            self.CHN.EX_G   : self._EX_G ,
-            self.CHN.EX_GR  : self._EX_GR,
-            self.CHN.MEX_G  : self._MEX_G,
-            self.CHN.NDI    : self._NDI  ,
-            self.CHN.VEG    : self._VEG  ,
-
-            self.CHN.NDVI   : self._NDVI,
-            self.CHN.BNDVI  : self._BNDVI,
-            self.CHN.GNDVI  : self._GNDVI,
-            self.CHN.GARI   : self._GARI,
-            self.CHN.GLI    : self._GLI,
-            self.CHN.GBNDVI : self._GBNDVI,
-            self.CHN.GRNDVI : self._GRNDVI,
-            self.CHN.NDRE   : self._NDRE,
-            self.CHN.LCI    : self._LCI,
-            self.CHN.MSAVI  : self._MSAVI,
-            self.CHN.OSAVI  : self._OSAVI,
-        }
+        chns = [chns] if isinstance(chns, str) else chns
 
         for chn in chns:
-            try:
-                _chn_mapping[chn]()
-            except KeyError:
-                continue
+            self.__getattribute__(chn)()
+
 
         # if glcm:
         #     if frame.shape[-1] == 0:
