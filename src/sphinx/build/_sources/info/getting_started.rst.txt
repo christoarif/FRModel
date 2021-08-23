@@ -1,37 +1,129 @@
+.. getting-started:
+
 ###############
 Getting Started
 ###############
 
-Most classes rely on np.ndarray representation, so most operations are similar and familiar.
+The main class to use would be ``Frame2D``.
 
-If you require the underlying np.ndarray, you just need to call ``f.data`` to grab it.
+========
+Examples
+========
 
-=======
-Example
-=======
-
-This short example illustrates how to load in an image (stored as a np.ndarray)
+----------------
+Loading an Image
+----------------
 
 .. code-block:: python
 
-    from frmodel.base.consts import CONSTS
     from frmodel.base.D2.frame2D import Frame2D
 
     frame = Frame2D.from_image("path/to/file.jpg")
-    frame = frame.get_chns(self_=True, chns=[frame.CHN.HSV])
-    data: np.ndarray = frame.data
 
-This simple example illustrates how to load a Frame2D and grab the HSV channel, then convert to np.ndarray.
+Here, we get an RGB Image and load it as a ``Frame2D``.
 
-========
-Wrapping
-========
+---------------------
+Retrieving np.ndarray
+---------------------
 
-Most classes here are just wrappers of existing library classes.
-If you would like to extract the underlying data, e.g. ``np.ndarray``, just call ``.data``.
+The ``np.ndarray`` is store inside ``Frame2D`` via a ``.data`` property call.
 
-This is useful if you would like to utilize functions that the library doesn't provide.
-However, it's recommended to use the library functions as a lot of boilercode is hidden.
+.. code-block:: python
 
-Open up a **Issue** on GitHub to notify me to create a wrapper for a specific repeated function.
+    from frmodel.base.D2.frame2D import Frame2D
 
+    frame = Frame2D.from_image("path/to/file.jpg")
+    ar = frame.data
+
+-----------------------------
+Calculating Non-GLCM Channels
+-----------------------------
+
+In ``0.1.0`` there is a new standard of channel calculation.
+
+This is so that the calculation call does not return a new Frame, instead, just appends to the current Frame.
+
+The following is how you get **Hue** from a **RGB** image.
+
+.. code-block:: python
+
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    f.get_chns('HUE')
+    ar = f[..., 'HUE'].data
+
+In the above code, **Hue** is calculated, and retrieved as an ``np.ndarray``.
+
+----------
+Shorthands
+----------
+
+In the case where you want to retrieve a single channel, it's easy to do so.
+
+*The call will also automatically call the respective calculations to retrieve it.*
+
+.. code-block:: python
+
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    ar1 = f.HUE().data
+
+    ar2 = f[..., 'HUE'].data
+
+When you call ``HUE()``, internally, the **Hue** is calculated and appended to ``f`` as reference.
+
+Thus ``f`` will have **Hue** as a channel.
+
+=======================
+Concurrent Calculations
+=======================
+
+Some channels **have** to be calculated together.
+
+For example, when you retrieve **Hue**, the **Saturation** and **Value** will also be calculated together.
+
+.. code-block:: python
+
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    f.get_chns('HUE')
+    ar = f[..., 'SATURATION'].data
+
+====
+GLCM
+====
+
+GLCM is similar to ``get_chns``. Using ``get_glcm``.
+
+.. code-block:: python
+
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    f.get_glcm(chns=['RED', 'BLUE'])
+    ar = f.CON('RED').data
+
+``get_glcm`` calculates its features, one of which is ``CON``, and we retrieve it using the ``.CON`` method.
+
+---------------------
+Shorthand & Full Call
+---------------------
+
+You can retrieve the channel in both ways.
+
+.. code-block:: python
+
+    from frmodel.base.D2.frame2D import Frame2D
+
+    f = Frame2D.from_image("path/to/file.jpg")
+    f.get_glcm(chns=['RED', 'BLUE'])
+
+    # Short Hand
+    ar = f.CON(['RED', 'BLUE']).data
+    # Full Call
+    ar = f[..., ['CON_RED', 'CON_BLUE']]).data
+
+Notice the Full Call is more verbose, but has a more extensible API.

@@ -1,6 +1,6 @@
-###############
-Getting Started
-###############
+##################
+Available Channels
+##################
 
 The main class to use would be ``Frame2D``.
 

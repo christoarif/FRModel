@@ -234,20 +234,140 @@ We can then grab the np.ndarray using <code class="docutils literal notranslate"
 
 </dd></dl>
 
-<dl class="py class">
-<dt id="frmodel.base.D2.frame2D.Frame2D.GLCM">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">GLCM</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">by:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">radius:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2</span></em>, <em class="sig-param"><span class="pre">bins:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">scale_on_bands:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em>, <em class="sig-param"><span class="pre">channels:</span> <span class="pre">List[frmodel.base.consts.CONSTS.CHN]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">channel_maxs:</span> <span class="pre">List[float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">channel_mins:</span> <span class="pre">List[float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.GLCM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This holds all GLCM parameters to pass into get_glcm</p>
-<p>Note that contrast, correlation, asm takes arguments similarly to how get_chns work.</p>
-<p>Entropy has been replaced by ASM. Angular Second Moment</p>
-<p>e.g. contrast=[f.CHN.HSV]</p>
 <dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.GLCM.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">by:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">radius:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2</span></em>, <em class="sig-param"><span class="pre">bins:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">scale_on_bands:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em>, <em class="sig-param"><span class="pre">channels:</span> <span class="pre">List[frmodel.base.consts.CONSTS.CHN]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">channel_maxs:</span> <span class="pre">List[float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">channel_mins:</span> <span class="pre">List[float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em>, <em class="sig-param"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.GLCM.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dt id="frmodel.base.D2.frame2D.Frame2D._BNDVI">
+<code class="sig-name descname"><span class="pre">_BNDVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._BNDVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blue Normalized Difference Vegetation Index</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._EX_G">
+<code class="sig-name descname"><span class="pre">_EX_G</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._EX_G" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the excessive green index</p>
+<p>2g - 1r - 1b</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._EX_GR">
+<code class="sig-name descname"><span class="pre">_EX_GR</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._EX_GR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the excessive green minus excess red index</p>
+<p>2g - r - b - 1.4r + g = 3g - 2.4r - b</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._GARI">
+<code class="sig-name descname"><span class="pre">_GARI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._GARI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Green Atmospherically Resistant Vegetation Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._GBNDVI">
+<code class="sig-name descname"><span class="pre">_GBNDVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._GBNDVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Green Blue NDVI</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._GLI">
+<code class="sig-name descname"><span class="pre">_GLI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._GLI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Green Leaf Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._GNDVI">
+<code class="sig-name descname"><span class="pre">_GNDVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._GNDVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Green Normalized Difference Vegetation Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._GRNDVI">
+<code class="sig-name descname"><span class="pre">_GRNDVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._GRNDVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Green Red NDVI</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._HSV">
+<code class="sig-name descname"><span class="pre">_HSV</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._HSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a HSV</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._LCI">
+<code class="sig-name descname"><span class="pre">_LCI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._LCI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf Chlorophyll Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._MEX_G">
+<code class="sig-name descname"><span class="pre">_MEX_G</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._MEX_G" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Modified excessive green index</p>
+<p>1.262g - 0.884r - 0.331b</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._MSAVI">
+<code class="sig-name descname"><span class="pre">_MSAVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._MSAVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modified Soil Adjusted Vegetation Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._NDI">
+<code class="sig-name descname"><span class="pre">_NDI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._NDI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Normalized Difference Index</p>
+<p>(g - r) / (g + r)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._NDRE">
+<code class="sig-name descname"><span class="pre">_NDRE</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._NDRE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized Difference Red Edge</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._NDVI">
+<code class="sig-name descname"><span class="pre">_NDVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._NDVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized Difference Vegetation Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._OSAVI">
+<code class="sig-name descname"><span class="pre">_OSAVI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._OSAVI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimized Soil Adjusted Vegetation Index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._VEG">
+<code class="sig-name descname"><span class="pre">_VEG</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">const_a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.667</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._VEG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Vegetative Index</p>
+<p>g / {(r^a) * [b^(1 - a)]}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>const_a</strong> – Constant A depends on the camera used.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="frmodel.base.D2.frame2D.Frame2D._XY">
+<code class="sig-name descname"><span class="pre">_XY</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._XY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the XY Coord Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use _get_chns to get as Frame2D</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -267,24 +387,6 @@ We can then grab the np.ndarray using <code class="docutils literal notranslate"
 </dd></dl>
 
 <dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D._b">
-<code class="sig-name descname"><span class="pre">_b</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._b" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short forms for easy calling, not recommended to use outside of class scope</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D._e">
-<code class="sig-name descname"><span class="pre">_e</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short forms for easy calling, not recommended to use outside of class scope</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D._g">
-<code class="sig-name descname"><span class="pre">_g</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._g" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short forms for easy calling, not recommended to use outside of class scope</p>
-</dd></dl>
-
-<dl class="py method">
 <dt id="frmodel.base.D2.frame2D.Frame2D._get_chn_size">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">_get_chn_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">frmodel.base.consts.CONSTS.CHN</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._get_chn_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>This gets the channel size</p>
@@ -300,18 +402,6 @@ We can then grab the np.ndarray using <code class="docutils literal notranslate"
 <dd class="field-odd"><p>np.ndarray, [A, B, C, …]</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D._n">
-<code class="sig-name descname"><span class="pre">_n</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._n" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short forms for easy calling, not recommended to use outside of class scope</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D._r">
-<code class="sig-name descname"><span class="pre">_r</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D._r" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short forms for easy calling, not recommended to use outside of class scope</p>
 </dd></dl>
 
 <dl class="py method">
@@ -374,7 +464,7 @@ They can be arbitrary, however, the labels are used to easily extract the channe
 
 <dl class="py method">
 <dt id="frmodel.base.D2.frame2D.Frame2D.crop_glcm">
-<code class="sig-name descname"><span class="pre">crop_glcm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">glcm_radius</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.crop_glcm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">crop_glcm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">glcm_radius</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glcm_by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">frmodel.base.D2.frame._frame_image._Frame2DImage</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.crop_glcm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crops the frame to match GLCM cropping.</p>
 </dd></dl>
 
@@ -479,206 +569,35 @@ R + G * 256 + B * 256 * 256.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_all_chns">
-<code class="sig-name descname"><span class="pre">get_all_chns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D.CHN" title="frmodel.base.D2.frame2D.Frame2D.CHN"><span class="pre">Frame2D.CHN</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glcm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Frame2DChannel.GLCM</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_all_chns" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all channels, excludes any in exc_chns.</p>
-<p>Use get_chns to get selected ones</p>
-<p>Order is given by the argument order.
-R, G, B, X, Y, H, S, V, EX_G, MEX_G, EX_GR, NDI, VEG,
-ConR, ConG, ConB, CorrR, CorrG, CorrB, EntR, EntG, EntB</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>self</strong> – Include current frame</p></li>
-<li><p><strong>exc_chns</strong> – Excluded Channels</p></li>
-<li><p><strong>glcm</strong> – GLCM Object</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Frame2D Object with requested channesls</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_bndvi">
-<code class="sig-name descname"><span class="pre">get_bndvi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_bndvi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Blue Normalized Difference Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
 <dt id="frmodel.base.D2.frame2D.Frame2D.get_chns">
-<code class="sig-name descname"><span class="pre">get_chns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D.CHN" title="frmodel.base.D2.frame2D.Frame2D.CHN"><span class="pre">Frame2D.CHN</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glcm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Frame2DChannel.GLCM</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_chns" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_chns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D.CHN" title="frmodel.base.D2.frame2D.Frame2D.CHN"><span class="pre">Frame2D.CHN</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_chns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets selected channels</p>
-<p>Use get_all_chns to get all but selected ones</p>
+<p>Use _get_all_chns to get all but selected ones</p>
 <p>Order is given by the argument order.
 R, G, B, H, S, V, EX_G, MEX_G, EX_GR, NDI, VEG, X, Y,
 ConR, ConG, ConB, CorrR, CorrG, CorrB, EntR, EntG, EntB</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>self</strong> – Include current frame</p></li>
-<li><p><strong>chns</strong> – Channels</p></li>
-<li><p><strong>glcm</strong> – GLCM Object</p></li>
-</ul>
+<dd class="field-odd"><p><strong>chns</strong> – Channels, can be also in strings.</p>
+</dd>
+<dt class="field-even">Returns Frame2D</dt>
+<dd class="field-even"><p>Itself as a reference.</p>
 </dd>
 </dl>
-<p>:returns</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_ex_g">
-<code class="sig-name descname"><span class="pre">get_ex_g</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_ex_g" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the excessive green index</p>
-<p>Original: 2g - 1r - 1b</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_ex_gr">
-<code class="sig-name descname"><span class="pre">get_ex_gr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_ex_gr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the excessive green minus excess red index</p>
-<p>2g - r - b - 1.4r + g = 3g - 2.4r - b</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_gari">
-<code class="sig-name descname"><span class="pre">get_gari</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_gari" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green Atmospherically Resistant Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_gbndvi">
-<code class="sig-name descname"><span class="pre">get_gbndvi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_gbndvi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green Blue NDVI</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="frmodel.base.D2.frame2D.Frame2D.get_glcm">
-<code class="sig-name descname"><span class="pre">get_glcm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">glcm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D.GLCM" title="frmodel.base.D2.frame2D.Frame2D.GLCM"><span class="pre">GLCM</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">np.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_glcm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_glcm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D.CHN" title="frmodel.base.D2.frame2D.Frame2D.CHN"><span class="pre">Frame2D.CHN</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_glcm" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will get the GLCM statistics for this window</p>
 <p>Details on how GLCM works is shown on the wiki.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>glcm</strong> – A GLCM Class, this class holds all parameters.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_gli">
-<code class="sig-name descname"><span class="pre">get_gli</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_gli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green Leaf Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_gndvi">
-<code class="sig-name descname"><span class="pre">get_gndvi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_gndvi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green Normalized Difference Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_grndvi">
-<code class="sig-name descname"><span class="pre">get_grndvi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_grndvi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Green Red NDVI</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_hsv">
-<code class="sig-name descname"><span class="pre">get_hsv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_hsv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a HSV</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_lci">
-<code class="sig-name descname"><span class="pre">get_lci</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_lci" title="Permalink to this definition">¶</a></dt>
-<dd><p>Leaf Chlorophyll Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_mex_g">
-<code class="sig-name descname"><span class="pre">get_mex_g</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_mex_g" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the Modified excessive green index</p>
-<p>1.262g - 0.884r - 0.331b</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_msavi">
-<code class="sig-name descname"><span class="pre">get_msavi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_msavi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Modified Soil Adjusted Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_ndi">
-<code class="sig-name descname"><span class="pre">get_ndi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_ndi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the Normalized Difference Index</p>
-<p>(g - r) / (g + r)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_ndre">
-<code class="sig-name descname"><span class="pre">get_ndre</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_ndre" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalized Difference Red Edge</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_ndvi">
-<code class="sig-name descname"><span class="pre">get_ndvi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_ndvi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalized Difference Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_osavi">
-<code class="sig-name descname"><span class="pre">get_osavi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_osavi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Optimized Soil Adjusted Vegetation Index</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_veg">
-<code class="sig-name descname"><span class="pre">get_veg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">const_a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.667</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_veg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the Vegetative Index</p>
-<p>g / {(r^a) * [b^(1 - a)]}</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>const_a</strong> – Constant A depends on the camera used.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.get_xy">
-<code class="sig-name descname"><span class="pre">get_xy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.get_xy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates the XY Coord Array</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>np.ndarray, similar shape to callee. Use get_chns to get as Frame2D</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chns</strong> – Channels, can be also in strings.</p></li>
+<li><p><strong>radius</strong> – Radius of GLCM Window</p></li>
+<li><p><strong>bins</strong> – Bin size pre-processing of GLCM.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -811,101 +730,6 @@ distinct flatten, where every RGB value will be labelled distinctly.</p>
 <dt id="frmodel.base.D2.frame2D.Frame2D.size">
 <code class="sig-name descname"><span class="pre">size</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of pixels, Height * Width.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.slide">
-<code class="sig-name descname"><span class="pre">slide</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">frmodel.base.consts.CONSTS.AXIS</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.slide" title="Permalink to this definition">¶</a></dt>
-<dd><p>Slides a window along an axis and grabs that window as a new Frame2D</p>
-<p>This operation is slower due to looping but allows for overlapping windows</p>
-<p>If the window meets the edge, it will be dropped.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>by</strong> – Size of each piece</p></li>
-<li><p><strong>stride</strong> – Stride when sliding</p></li>
-<li><p><strong>axis_cut</strong> – Axis to cut</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.slide_xy">
-<code class="sig-name descname"><span class="pre">slide_xy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.slide_xy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short hand for sliding by both axes.</p>
-<p>Slides by X first, then Y.</p>
-<p>E.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">6</span>  <span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="mi">16</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">7</span>  <span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="mi">17</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">3</span> <span class="o">|</span> <span class="mi">8</span>  <span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="mi">18</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">9</span>  <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="mi">19</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">5</span> <span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="mi">20</span> <span class="o">|</span>
-
-<span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>by</strong> – Size of each piece</p></li>
-<li><p><strong>stride</strong> – Stride when sliding</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of List of Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.split">
-<code class="sig-name descname"><span class="pre">split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">CONSTS.AXIS</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">SplitMethod</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.split" title="Permalink to this definition">¶</a></dt>
-<dd><p>Splits the current Frame into windows of specified size.</p>
-<p>This operation is much faster but cannot have overlapping windows</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>by</strong> – Size of each piece</p></li>
-<li><p><strong>axis_cut</strong> – Axis to cut</p></li>
-<li><p><strong>method</strong> – Method of splitting</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of Frame2D</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="frmodel.base.D2.frame2D.Frame2D.split_xy">
-<code class="sig-name descname"><span class="pre">split_xy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">SplitMethod</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#frmodel.base.D2.frame2D.Frame2D" title="frmodel.base.D2.frame2D.Frame2D"><span class="pre">Frame2D</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#frmodel.base.D2.frame2D.Frame2D.split_xy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Short hand for splitting by both axes.</p>
-<p>Splits by X first, then Y.</p>
-<p>E.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">6</span>  <span class="o">|</span> <span class="mi">11</span> <span class="o">|</span> <span class="mi">16</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">7</span>  <span class="o">|</span> <span class="mi">12</span> <span class="o">|</span> <span class="mi">17</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">3</span> <span class="o">|</span> <span class="mi">8</span>  <span class="o">|</span> <span class="mi">13</span> <span class="o">|</span> <span class="mi">18</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">9</span>  <span class="o">|</span> <span class="mi">14</span> <span class="o">|</span> <span class="mi">19</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mi">5</span> <span class="o">|</span> <span class="mi">10</span> <span class="o">|</span> <span class="mi">15</span> <span class="o">|</span> <span class="mi">20</span> <span class="o">|</span>
-
-<span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>by</strong> – Size of each piece</p></li>
-<li><p><strong>method</strong> – Method of splitting</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of List of Frame2D</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
