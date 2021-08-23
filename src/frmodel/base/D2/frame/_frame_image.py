@@ -22,7 +22,7 @@ class _Frame2DImage(ABC):
         return self.create(self.data[top:-bottom or None, left:-right or None, ...],
                            self.labels)
 
-    def crop_glcm(self: 'Frame2D', glcm_radius: int, glcm_by: int = 1):
+    def crop_glcm(self: 'Frame2D', glcm_radius: int, glcm_by: int = 1) -> _Frame2DImage:
         """ Crops the frame to match GLCM cropping. """
         return self.crop(glcm_radius + glcm_by, glcm_radius + glcm_by, glcm_radius, glcm_radius)
 
