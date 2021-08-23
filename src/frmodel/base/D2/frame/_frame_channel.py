@@ -32,19 +32,7 @@ class _Frame2DChannel(_Frame2DChannelFastGLCM, _Frame2DChannelSpec):
 
         for chn in chns:
             self.__getattribute__(chn)()
-
-
-        # if glcm:
-        #     if frame.shape[-1] == 0:
-        #         # Cannot convolute a 0 set. We'll still entertain _get_glcm only.
-        #         frame = self.create(*self.get_glcm(glcm))
-        #     else:
-        #         frame = frame.astype(np.float)
-        #         frame = frame.crop_glcm(glcm.radius)\
-        #             .append(*self.get_glcm(glcm))
-
-        # frame._data = np.ma.array(frame.data,
-        #                           mask=np.repeat(frame.nanmask()[..., np.newaxis], frame.shape[-1]))
+            
         return self
 
     def _default(self: "Frame2D", chns,
