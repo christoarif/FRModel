@@ -16,12 +16,6 @@ if TYPE_CHECKING:
 class _Frame2DChannelFastGLCM(ABC):
     """ This re-implements Wang Jifei's Fast GLCM Script by adding the option of binarization. """
 
-    def CON(self, chns: Union[List[str], str]):  return self[:, :, [f"CON_{i}" for i in chns] if isinstance(chns, List) else chns]
-    def COR(self, chns: Union[List[str], str]):  return self[:, :, [f"COR_{i}" for i in chns] if isinstance(chns, List) else chns]
-    def ASM(self, chns: Union[List[str], str]):  return self[:, :, [f"ASM_{i}" for i in chns] if isinstance(chns, List) else chns]
-    def MEAN(self, chns: Union[List[str], str]): return self[:, :, [f"MEAN_{i}" for i in chns] if isinstance(chns, List) else chns]
-    def VAR(self, chns: Union[List[str], str]):  return self[:, :, [f"VAR_{i}" for i in chns] if isinstance(chns, List) else chns]
-
     def get_glcm(self: 'Frame2D',
                  chns: Iterable[Frame2D.CHN] = (),
                  radius: int = 2,
@@ -54,3 +48,19 @@ class _Frame2DChannelFastGLCM(ABC):
         self._labels = t.labels
 
         return self
+
+    def CON(self, chns: Union[List[str], str]):
+        return self[:, :, [f"CON_{i}" for i in chns] if isinstance(chns, List) else f"CON_{chns}"]
+
+    def COR(self, chns: Union[List[str], str]):
+        return self[:, :, [f"COR_{i}" for i in chns] if isinstance(chns, List) else f"COR_{chns}"]
+
+    def ASM(self, chns: Union[List[str], str]):
+        return self[:, :, [f"ASM_{i}" for i in chns] if isinstance(chns, List) else f"ASM_{chns}"]
+
+    def MEAN(self, chns: Union[List[str], str]):
+        return self[:, :, [f"MEAN_{i}" for i in chns] if isinstance(chns, List) else f"MEAN_{chns}"]
+
+    def VAR(self, chns: Union[List[str], str]):
+        return self[:, :, [f"VAR_{i}" for i in chns] if isinstance(chns, List) else f"VAR_{chns}"]
+
