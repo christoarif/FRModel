@@ -19,7 +19,9 @@ The new format, uses the following calling template
 .. code-block:: python
 
     f: Frame2D
-    f.get_chns(chns:List[CHN])
+    f.get_chns(chns:List[f.CHN, str])
+
+*The* ``f.CHN`` *consts are essentially strings*
 
 For example
 
@@ -28,30 +30,21 @@ For example
     f: Frame2D
     f.get_chns([f.CHN.HSV, f.CHN.EX_G, f.CHN.VEG])
 
-The ``CHN`` argument can be grabbed from ``Frame2D`` class or any instance, or ``from consts import CONSTS``, though
-the latter method is not recommended as it's verbose.
-
-These ``CHN`` are actually strings, hence it's perfectly valid to call as
+``f.CHN.XX`` are all ``str`` variants, so you can also call using strings, though, will lack validation.
 
 .. code-block:: python
 
     f: Frame2D
-    f.get_chns(self_=True, chns=['H', 'S']) # Other arguments omitted
-
-However, it's not recommended as it's prone to capitalization errors and typos.
-
-
-Note that ``get_all_chns`` and ``get_chns`` gets all channels above.
-
-The difference between those 2 is that, with ``get_all_chns`` you exclude channels you don't need,
-depending on your choices, one may be more succinct than the other.
+    f.get_chns(self_=True, chns=['HUE', 'SATURATION']) # Other arguments omitted
 
 =======
 Slicing
 =======
+
 *New in 0.0.6*
 
 You can now slice like NumPy for the dimensions
+
 .. code-block:: python
 
     f: Frame2D
@@ -62,12 +55,14 @@ You can now slice like NumPy for the dimensions
 Retriving GLCM
 ==============
 
-For GLCM, you need to specify its texture and the channel
+For GLCM, you need to specify its feature and the channel.
+
+See the available features here: :doc:`../../../info/available_channels`
 
 .. code-block:: python
 
     f: Frame2D
-    f[..., f.CHN.GLCM.COR(f.CHN.RED)]
+    f.COR(f.CHN.RED)
 
 ========
 Formulas
