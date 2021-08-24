@@ -3,6 +3,18 @@ ChangeLog
 #########
 
 -----
+0.1.0
+-----
+
+- Clean up support for GLCM:
+  - Include 8 way GLCM.
+  - Standalone release here: `GLCM Bin 5 <https://github.com/Eve-ning/glcmbin5>`_
+- Simplify syntax for getting features
+- Add shorthands for non-GLCM and GLCM features
+  - ``f.RED()``, ``f.GREEN()``,
+  - ``f.CON('RED')``, ``f.COR(['RED, 'GREEN'])``
+
+-----
 0.0.6
 -----
 

@@ -12,6 +12,8 @@ In doubt, use the full ``f.CHN.XX`` call as autocomplete will help you.
 Non-GLCM Channels
 =================
 
+Related :doc:`Examples on retrieving channels <getting_started>`
+
 The syntax is ``f.CHN.XX``.
 
 +--------------+------------------------------------------------------+--------+
@@ -81,6 +83,8 @@ The syntax is ``f.CHN.XX``.
 =============
 GLCM Channels
 =============
+
+Related :doc:`Examples on retrieving channels <getting_started>`
 
 For the channel label, it'll be in the format ``FEATURE_CHANNEL``.
 

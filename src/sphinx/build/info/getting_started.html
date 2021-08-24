@@ -82,11 +82,16 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../info.html">Information</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#"> Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#must-knows">Must Knows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#convention">Convention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-saving">Loading &amp; Saving</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#loading-an-image">Loading an Image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#retrieving-np-ndarray">Retrieving np.ndarray</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calculating-non-glcm-channels">Calculating Non-GLCM Channels</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#shorthands">Shorthands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shorthand">Shorthand</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#concurrent-calculations">Concurrent Calculations</a></li>
@@ -170,6 +175,25 @@
   <div class="section" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>The main class to use would be <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code>.</p>
+<div class="section" id="must-knows">
+<h2>Must Knows<a class="headerlink" href="#must-knows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="convention">
+<h3>Convention<a class="headerlink" href="#convention" title="Permalink to this headline">¶</a></h3>
+<p>By convention, I name <code class="docutils literal notranslate"><span class="pre">Frame2D</span></code> instances as <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<p>If you see <code class="docutils literal notranslate"><span class="pre">f.CHN</span></code> as a type-hint, it means to use <code class="docutils literal notranslate"><span class="pre">Frame2D.CHN.XX</span></code> constants.
+These constants are simply <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">Tuple[str]</span></code></p>
+<p>You can see the constants here <a class="reference internal" href="available_channels.html"><span class="doc">Available Channels</span></a>.</p>
+</div>
+<div class="section" id="loading-saving">
+<h3>Loading &amp; Saving<a class="headerlink" href="#loading-saving" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Frame2D</span></code> can be saved and loaded as <code class="docutils literal notranslate"><span class="pre">.npz</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="s2">&quot;path/to/file.jpg&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;save.npz&quot;</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">Frame2D</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;save.npz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="loading-an-image">
@@ -193,6 +217,7 @@
 </div>
 <div class="section" id="calculating-non-glcm-channels">
 <h3>Calculating Non-GLCM Channels<a class="headerlink" href="#calculating-non-glcm-channels" title="Permalink to this headline">¶</a></h3>
+<p>Syntax: <code class="docutils literal notranslate"><span class="pre">f.get_chns(List[f.CHN,</span> <span class="pre">str])</span></code></p>
 <p>In <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code> there is a new standard of channel calculation.</p>
 <p>This is so that the calculation call does not return a new Frame, instead, just appends to the current Frame.</p>
 <p>The following is how you get <strong>Hue</strong> from a <strong>RGB</strong> image.</p>
@@ -205,8 +230,9 @@
 </div>
 <p>In the above code, <strong>Hue</strong> is calculated, and retrieved as an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p>
 </div>
-<div class="section" id="shorthands">
-<h3>Shorthands<a class="headerlink" href="#shorthands" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="shorthand">
+<h3>Shorthand<a class="headerlink" href="#shorthand" title="Permalink to this headline">¶</a></h3>
+<p>Syntax: <code class="docutils literal notranslate"><span class="pre">f.XX()</span></code></p>
 <p>In the case where you want to retrieve a single channel, it’s easy to do so.</p>
 <p><em>The call will also automatically call the respective calculations to retrieve it.</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
@@ -235,6 +261,7 @@
 </div>
 <div class="section" id="glcm">
 <h2>GLCM<a class="headerlink" href="#glcm" title="Permalink to this headline">¶</a></h2>
+<p>Syntax: <code class="docutils literal notranslate"><span class="pre">f.get_glcm(chns=List[f.CHN,</span> <span class="pre">str],</span> <span class="pre">radius=int,</span> <span class="pre">bins=int)</span></code></p>
 <p>GLCM is similar to <code class="docutils literal notranslate"><span class="pre">get_chns</span></code>. Using <code class="docutils literal notranslate"><span class="pre">get_glcm</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
 
@@ -246,6 +273,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">get_glcm</span></code> calculates its features, one of which is <code class="docutils literal notranslate"><span class="pre">CON</span></code>, and we retrieve it using the <code class="docutils literal notranslate"><span class="pre">.CON</span></code> method.</p>
 <div class="section" id="shorthand-full-call">
 <h3>Shorthand &amp; Full Call<a class="headerlink" href="#shorthand-full-call" title="Permalink to this headline">¶</a></h3>
+<p>Syntax: <code class="docutils literal notranslate"><span class="pre">f.FEATURE(List[f.CHN,</span> <span class="pre">str])</span></code></p>
 <p>You can retrieve the channel in both ways.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frmodel.base.D2.frame2D</span> <span class="kn">import</span> <span class="n">Frame2D</span>
 
