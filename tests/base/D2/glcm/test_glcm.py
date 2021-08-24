@@ -10,10 +10,15 @@ def fg(f):
     return f
 
 def test_get_glcm(fg, c):
-    """ Verify labels are correctly initialized"""
     assert fg.shape[-1] == 5 + 5 * 3
 
 def test_shorthand(fg, c):
+    """ Shorthand allows the user to get by feature without having to
+    repeat the prefix
+
+    f['CON_RED', 'CON_BLUE'] == f.CON('RED', 'BLUE')
+
+    """
     assert fg.CON('RED').shape[-1] == 1
 
     with pytest.raises(KeyError):
@@ -29,6 +34,7 @@ def test_shorthand(fg, c):
         fg.CON(['??', 'RED'])
 
 def test_shorthand_features(fg, c):
+    """ Test the other features. """
     assert fg.CON('RED').shape[-1] == 1
     assert fg.COR('RED').shape[-1] == 1
     assert fg.ASM('RED').shape[-1] == 1
