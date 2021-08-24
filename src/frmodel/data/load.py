@@ -12,7 +12,7 @@ class Tree:
     name: str
     frame: Frame2D
 
-def load_spec(dir_path: str, scale: float, bounds_path: str = "bounds.csv") -> Tuple[Frame2D, List[Tree]]:
+def load_spec(dir_path: str, scale: float = 1.0, bounds_path: str = "bounds.csv") -> Tuple[Frame2D, List[Tree]]:
     """ Quick loads a spec dataset. The required files must be present.
 
     Required:
