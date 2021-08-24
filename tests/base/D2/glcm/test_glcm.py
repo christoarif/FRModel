@@ -13,7 +13,7 @@ def test_get_glcm(fg, c):
     """ Verify labels are correctly initialized"""
     assert fg.shape[-1] == 5 + 5 * 3
 
-def test_get_glcm_chn(fg, c):
+def test_shorthand(fg, c):
     assert fg.CON('RED').shape[-1] == 1
 
     with pytest.raises(KeyError):
@@ -28,3 +28,9 @@ def test_get_glcm_chn(fg, c):
     with pytest.raises(KeyError):
         fg.CON(['??', 'RED'])
 
+def test_shorthand_features(fg, c):
+    assert fg.CON('RED').shape[-1] == 1
+    assert fg.COR('RED').shape[-1] == 1
+    assert fg.ASM('RED').shape[-1] == 1
+    assert fg.MEAN('RED').shape[-1] == 1
+    assert fg.VAR('RED').shape[-1] == 1
