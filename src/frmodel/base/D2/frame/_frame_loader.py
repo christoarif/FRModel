@@ -102,7 +102,11 @@ class _Frame2DLoader(ABC):
 
     @classmethod
     def load(cls: 'Frame2D', path: str, mask=True):
-        """ Loads the Frame2D from a .npz"""
+        """ Loads the Frame2D from a .npz
+
+        :param path: Path to the .npz
+        :param mask: To mask the array. This should be disabled if MemoryError occurs.
+        """
         files = np.load(path, allow_pickle=True)
         return cls.create(
             data=files['data'] if files['mask'] is None or not mask else np.ma.MaskedArray(data=files['data'], mask=files['mask']),
