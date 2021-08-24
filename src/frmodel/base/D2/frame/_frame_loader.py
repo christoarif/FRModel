@@ -101,9 +101,9 @@ class _Frame2DLoader(ABC):
                  mask=self.data.mask if isinstance(self.data, np.ma.MaskedArray) else None)
 
     @classmethod
-    def load(cls: 'Frame2D', path: str):
+    def load(cls: 'Frame2D', path: str, mask=True):
         """ Loads the Frame2D from a .npz"""
         files = np.load(path, allow_pickle=True)
         return cls.create(
-            data=files['data'] if files['mask'] is None else np.ma.MaskedArray(data=files['data'], mask=files['mask']),
+            data=files['data'] if files['mask'] is None or not mask else np.ma.MaskedArray(data=files['data'], mask=files['mask']),
             labels=files['labels'].tolist())
