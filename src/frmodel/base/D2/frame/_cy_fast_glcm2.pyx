@@ -1,3 +1,4 @@
+
 import numpy as np
 cimport numpy as np
 cimport cython
@@ -23,9 +24,13 @@ cdef class CyGLCM:
     cdef public np.ndarray ar
     cdef public np.ndarray features
     cdef public np.ndarray glcm
+    cdef public tuple pairs
+    cdef public char verbose
 
     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,
-                 DTYPE_t8 radius, DTYPE_t8 bins):
+                 DTYPE_t8 radius, DTYPE_t8 bins,
+                 verbose=True,
+                 pairs=('H', 'V', 'SE', 'NE')):
         self.radius = radius
         self.diameter = radius * 2 + 1
         self.bins = bins
@@ -35,6 +40,8 @@ cdef class CyGLCM:
                                   ar.shape[2], 5],
                                  dtype=np.float32)
         self.glcm = np.zeros([bins, bins], dtype=np.uint8)
+        self.pairs = pairs
+        self.verbose = verbose
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
@@ -44,7 +51,8 @@ cdef class CyGLCM:
 
         cdef np.ndarray ar_bin = self._binarize(ar)
         cdef DTYPE_t8 chs = ar_bin.shape[2]
-        with tqdm(total=chs * 4, desc=f"GLCM Progress") as pbar:
+        with tqdm(total=chs * len(self.pairs), disable=not self.verbose,
+                  desc=f"GLCM Progress") as pbar:
             for ch in range(chs):
                 pairs = self._pair(ar_bin[..., ch])
                 for pair in pairs:
@@ -62,7 +70,6 @@ cdef class CyGLCM:
                        np.ndarray[DTYPE_t8, ndim=4] pair_j,
                        np.ndarray[DTYPE_ft32, ndim=3] features):
         """ The ar would be WR, WC, CR, CC
-
         :param pair_i: WR WC CR CC
         :param pair_j: WR WC CR CC
         :return:
@@ -85,7 +92,6 @@ cdef class CyGLCM:
                               np.ndarray[DTYPE_t8, ndim=2] pair_j,
                               np.ndarray[DTYPE_ft32, ndim=1] features):
         """
-
         :param pair_i: CR CC
         :param pair_j: CR CC
         :param features: SINGULAR
@@ -168,8 +174,9 @@ cdef class CyGLCM:
     def _pair(self, np.ndarray[DTYPE_t8, ndim=2] ar):
 
         ar_w = view_as_windows(ar, (self.diameter, self.diameter))
-        pair_h = (ar_w[:-1, :-1], ar_w[:-1, 1:])
-        pair_v = (ar_w[:-1, :-1], ar_w[1:, :-1])
-        pair_se = (ar_w[:-1, :-1], ar_w[1:, 1:])
-        pair_ne = (ar_w[1:, :-1], ar_w[1:, 1:])
-        return pair_h, pair_v, pair_se, pair_ne
+        pairs = []
+        if "H" in self.pairs:  pairs.append((ar_w[:-1, :-1], ar_w[:-1, 1:]))
+        if "V" in self.pairs:  pairs.append((ar_w[:-1, :-1], ar_w[1:, :-1]))
+        if "SE" in self.pairs: pairs.append((ar_w[:-1, :-1], ar_w[1:, 1:]))
+        if "NE" in self.pairs: pairs.append((ar_w[1:, :-1], ar_w[1:, 1:]))
+        return pairs
