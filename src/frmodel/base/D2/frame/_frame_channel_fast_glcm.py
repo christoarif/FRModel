@@ -31,7 +31,8 @@ class _Frame2DChannelFastGLCM(ABC):
 
         # FAST GLCM
         chns = chns if chns else list(self.labels.keys())
-        data = CyGLCM(self[..., chns].data.astype(np.float32), radius, bins).create_glcm()
+        self._data = self.data.astype(np.float32)
+        data = CyGLCM(self[..., chns].data, radius, bins).create_glcm()
         data = data.swapaxes(-2, -1).reshape([*data.shape[:2], -1])
 
         labels = []
