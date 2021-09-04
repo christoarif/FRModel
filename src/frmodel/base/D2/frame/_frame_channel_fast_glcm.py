@@ -32,6 +32,7 @@ class _Frame2DChannelFastGLCM(ABC):
         # FAST GLCM
         chns = chns if chns else list(self.labels.keys())
         self._data = self.data.astype(np.float32)
+        self._data = self.scale_values_on_band(0, 1).data
         data = CyGLCM(self[..., chns].data, radius, bins).create_glcm()
         data = data.swapaxes(-2, -1).reshape([*data.shape[:2], -1])
 
