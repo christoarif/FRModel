@@ -5,12 +5,23 @@ from typing import Tuple, List
 import pandas as pd
 
 from frmodel.base.D2 import Frame2D
+from frmodel.base.D2.draw2D import Draw2D
 
 
 @dataclass
 class Tree:
     name: str
     frame: Frame2D
+    bounds: Tuple[int, int, int, int]
+
+def draw_trees(frame: Frame2D, trees: List[Tree], img_path: str):
+    d = Draw2D.load_frame(frame)
+    for t in trees:
+        d.draw().rectangle((t.bounds[2], t.bounds[0], t.bounds[3], t.bounds[1]), width=5)
+        d.draw().text((t.bounds[2], t.bounds[0] - 15), t.name, anchor="ld")
+
+    d.save(img_path)
+
 
 def load_spec(dir_path: str, scale: float = 1.0, bounds_path: str = "bounds.csv") -> Tuple[Frame2D, List[Tree]]:
     """ Quick loads a spec dataset. The required files must be present.
@@ -46,6 +57,6 @@ def load_spec(dir_path: str, scale: float = 1.0, bounds_path: str = "bounds.csv"
         for _, r in bounds.iterrows():
             r_ = (r[1:] * scale).astype(int)
             tree = f[r_[1]:r_[2],r_[3]:r_[4]]
-            trees.append(Tree(str(r[0]), tree))
+            trees.append(Tree(str(r[0]), tree, (r_[1],r_[2],r_[3],r_[4])))
 
     return f, trees

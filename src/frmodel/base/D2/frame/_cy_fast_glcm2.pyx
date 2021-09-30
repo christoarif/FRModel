@@ -20,7 +20,7 @@ cdef enum:
     VAR = 4
 
 cdef class CyGLCM:
-    cdef public DTYPE_t8 radius, bins, diameter
+    cdef public DTYPE_t8 radius, bins, diameter, step_size
     cdef public np.ndarray ar
     cdef public np.ndarray features
     cdef public np.ndarray glcm
@@ -28,15 +28,23 @@ cdef class CyGLCM:
     cdef public char verbose
 
     def __init__(self, np.ndarray[DTYPE_ft32, ndim=3] ar,
-                 DTYPE_t8 radius, DTYPE_t8 bins,
+                 DTYPE_t8 radius, DTYPE_t8 bins, DTYPE_t8 step_size,
                  verbose=True,
                  pairs=('H', 'V', 'SE', 'NE')):
+
+        # We set the basic variables here
         self.radius = radius
         self.diameter = radius * 2 + 1
         self.bins = bins
+        self.step_size = step_size
         self.ar = ar
-        self.features = np.zeros([ar.shape[0] - self.diameter,
-                                  ar.shape[1] - self.diameter,
+
+        # The feature array is the output array.
+        # The expected shape is the original shape
+        # 1) Minus the 2 * radius
+        # 2) Minus the step size
+        self.features = np.zeros([(ar.shape[0] - self.diameter) - (self.step_size - 1) ,
+                                  (ar.shape[1] - self.diameter) - (self.step_size - 1) ,
                                   ar.shape[2], 5],
                                  dtype=np.float32)
         self.glcm = np.zeros([bins, bins], dtype=np.uint8)
@@ -49,7 +57,9 @@ cdef class CyGLCM:
         cdef np.ndarray[DTYPE_ft32, ndim=3] ar = self.ar
         cdef np.ndarray[DTYPE_ft32, ndim=4] features = self.features
 
+        # This coerces it into uint8
         cdef np.ndarray ar_bin = self._binarize(ar)
+
         cdef DTYPE_t8 chs = ar_bin.shape[2]
         with tqdm(total=chs * len(self.pairs), disable=not self.verbose,
                   desc=f"GLCM Progress") as pbar:
@@ -175,8 +185,12 @@ cdef class CyGLCM:
 
         ar_w = view_as_windows(ar, (self.diameter, self.diameter))
         pairs = []
-        if "H" in self.pairs:  pairs.append((ar_w[:-1, :-1], ar_w[:-1, 1:]))
-        if "V" in self.pairs:  pairs.append((ar_w[:-1, :-1], ar_w[1:, :-1]))
-        if "SE" in self.pairs: pairs.append((ar_w[:-1, :-1], ar_w[1:, 1:]))
-        if "NE" in self.pairs: pairs.append((ar_w[1:, :-1], ar_w[1:, 1:]))
+        if "H" in self.pairs:  pairs.append((ar_w[:-self.step_size, :-self.step_size],
+                                             ar_w[:-self.step_size, self.step_size:]))
+        if "V" in self.pairs:  pairs.append((ar_w[:-self.step_size, :-self.step_size],
+                                             ar_w[self.step_size:, :-self.step_size]))
+        if "SE" in self.pairs: pairs.append((ar_w[:-self.step_size, :-self.step_size],
+                                             ar_w[self.step_size:, self.step_size:]))
+        if "NE" in self.pairs: pairs.append((ar_w[self.step_size:, :-self.step_size],
+                                             ar_w[self.step_size:, self.step_size:]))
         return pairs

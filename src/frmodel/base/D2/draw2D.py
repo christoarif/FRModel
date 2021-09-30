@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Tuple, Any
 
+import numpy as np
 from PIL import Image, ImageDraw
 
 from frmodel.base.D2 import Frame2D
@@ -36,7 +37,7 @@ class Draw2D:
     @staticmethod
     def load_frame(frame: Frame2D) -> Draw2D:
         """ Creates a new Draw2D Class with a frame as the Canvas """
-        canvas = Image.fromarray(frame.data_rgb().data, mode=DRAW_MODE)
+        canvas = Image.fromarray(frame.data_rgb().scale_values().data.astype(np.uint8), mode=DRAW_MODE)
         return Draw2D(canvas, ImageDraw.Draw(canvas, DRAW_MODE))
 
     def save(self, file_path):
