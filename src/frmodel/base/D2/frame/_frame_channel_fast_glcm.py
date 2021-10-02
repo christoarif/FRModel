@@ -7,10 +7,12 @@ from typing import Tuple, List, TYPE_CHECKING, Union, Iterable
 import numpy as np
 
 from frmodel.base import CONSTS
-from frmodel.base.D2.frame._cy_fast_glcm2 import CyGLCM
+from frmodel.base.D2.frame.glcm import CyGLCM
 
 if TYPE_CHECKING:
     from frmodel.base.D2.frame2D import Frame2D
+
+
 
 
 class _Frame2DChannelFastGLCM(ABC):
@@ -33,13 +35,13 @@ class _Frame2DChannelFastGLCM(ABC):
 
         assert radius > 1,    f"Radius should be {radius} > 1"
         assert bins > 1,      f"Bins should be {bins} > 1"
-        assert step_size > 1, f"Step Size should be {step_size} > 1"
+        assert step_size >= 1, f"Step Size should be {step_size} > 1"
 
         # FAST GLCM
         chns = chns if chns else list(self.labels.keys())
         self._data = self.data.astype(np.float32)
         self._data = self.scale_values_on_band(0, 1).data
-        data = CyGLCM(self[..., chns].data, radius, bins, step_size=step_size).create_glcm()
+        data = CyGLCM(self[..., chns].data, radius, bins).create_glcm()
         data = data.swapaxes(-2, -1).reshape([*data.shape[:2], -1])
 
         labels = []
@@ -50,7 +52,7 @@ class _Frame2DChannelFastGLCM(ABC):
         labels.extend(CONSTS.CHN.GLCM.MEAN(list(self._util_flatten(chns))))
         labels.extend(CONSTS.CHN.GLCM.VAR( list(self._util_flatten(chns))))
 
-        self._data = self.crop_glcm(radius, glcm_by=step_size).data
+        self._data = self.crop_glcm(radius, glcm_by=step_size + 1).data
         t = self.append(data, labels=labels)
         self._data = t.data
         self._labels = t.labels
