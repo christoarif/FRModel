@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC
-from dataclasses import dataclass, field
-from typing import Tuple, List, TYPE_CHECKING, Union, Iterable
+from typing import List, TYPE_CHECKING, Union, Iterable
 
 import numpy as np
 
@@ -11,8 +10,6 @@ from frmodel.base.D2.frame.glcm import CyGLCM
 
 if TYPE_CHECKING:
     from frmodel.base.D2.frame2D import Frame2D
-
-
 
 
 class _Frame2DChannelFastGLCM(ABC):
@@ -41,7 +38,10 @@ class _Frame2DChannelFastGLCM(ABC):
         chns = chns if chns else list(self.labels.keys())
         self._data = self.data.astype(np.float32)
         self._data = self.scale_values_on_band(0, 1).data
-        data = CyGLCM(self[..., chns].data, radius, bins).create_glcm()
+        data = CyGLCM(self[..., chns].data,
+                      radius=radius,
+                      bins=bins,
+                      step_size=step_size).create_glcm()
         data = data.swapaxes(-2, -1).reshape([*data.shape[:2], -1])
 
         labels = []
