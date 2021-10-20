@@ -27,6 +27,7 @@ ctypedef np.uint32_t DTYPE_t32
 ctypedef np.float32_t DTYPE_ft32
 from tqdm import tqdm
 from libc.math cimport sqrt
+from libc.math cimport isnan
 
 
 cdef enum:
@@ -173,8 +174,13 @@ cdef class CyGLCM:
         # We populate the GLCM here
         for cr in range(self.diameter):
             for cc in range(self.diameter):
+
                 i = window_i[cr, cc]
                 j = window_j[cr, cc]
+
+                # If there are any nan, we just abort, since it's useless data.
+                if isnan(i) or isnan(j): return
+
                 mean_i += i
                 mean_j += j
                 glcm[i, j] += <DTYPE_ft32> (1 / (2 * <DTYPE_ft32>(self.diameter ** 2)))

@@ -36,13 +36,24 @@ class _Frame2DChannelFastGLCM(ABC):
 
         # FAST GLCM
         chns = chns if chns else list(self.labels.keys())
+
         self._data = self.data.astype(np.float32)
         self._data = self.scale_values_on_band(0, 1).data
+
+        mask = None
+        if np.isnan(self.data).any():
+            mask = self.nanmask()
+            # The np.asarray cast is to remove masking
+            self._data = np.nan_to_num(np.asarray(self.data))
+
         data = CyGLCM(self[..., chns].data,
                       radius=radius,
                       bins=bins,
                       step_size=step_size).create_glcm()
         data = data.swapaxes(-2, -1).reshape([*data.shape[:2], -1])
+        if mask is not None:
+            trim = radius + step_size
+            data[mask[trim:-trim, trim:-trim]] = np.nan
 
         labels = []
 
@@ -52,7 +63,7 @@ class _Frame2DChannelFastGLCM(ABC):
         labels.extend(CONSTS.CHN.GLCM.MEAN(list(self._util_flatten(chns))))
         labels.extend(CONSTS.CHN.GLCM.VAR( list(self._util_flatten(chns))))
 
-        self._data = self.crop_glcm(radius, glcm_by=step_size + 1).data
+        self._data = self.crop_glcm(radius, glcm_by=(step_size * 2)).data
         t = self.append(data, labels=labels)
         self._data = t.data
         self._labels = t.labels
