@@ -6,7 +6,7 @@ import pandas as pd
 
 from frmodel.base.D2 import Frame2D
 from frmodel.base.D2.draw2D import Draw2D
-
+from frmodel.base.D2.frame import glcm
 
 @dataclass
 class Tree:
@@ -53,7 +53,6 @@ def load_spec(dir_path: str, scale: float = 1.0, bounds_path: str = "bounds.csv"
     trees = []
     if os.path.isfile(dir_path + bounds_path):
         bounds = pd.read_csv(dir_path + bounds_path, "|", header=None)
-
         for _, r in bounds.iterrows():
             r_ = (r[1:] * scale).astype(int)
             tree = f[r_[1]:r_[2],r_[3]:r_[4]]
